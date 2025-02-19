@@ -21,7 +21,9 @@
     };
 
     # Extra entries to add to PATH
-    sessionPath = [ ];
+    sessionPath = [
+      "/opt/homebrew/bin"
+    ];
 
     sessionVariables = {
       GOPATH = "$HOME/gopath";
