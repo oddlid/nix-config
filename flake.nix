@@ -1,9 +1,9 @@
 {
-  description = "nix-darwin system flake for odd-mbp-m1";
+  description = "Nix configuration for Oddware systems";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin = {
+    darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -18,7 +18,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nixvim }:
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nixvim }:
     let
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
@@ -117,7 +117,7 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#$hostname
       darwinConfigurations = {
-        "odd-mbp-m1" = nix-darwin.lib.darwinSystem {
+        "odd-mbp-m1" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
             configuration
