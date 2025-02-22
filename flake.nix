@@ -28,28 +28,8 @@
         environment.systemPackages = with pkgs; [
           devenv
           git
-          htop
           vim
           zsh
-          #tmux
-          #tmuxPlugins.tmux-fzf
-          #zsh-forgit
-          #zsh-fzf-history-search
-          #zsh-fzf-tab
-          #fzf
-          #fzf-git-sh
-          #fzf-zsh
-          #brave
-          #cloudflare-warp
-          #cloudflared
-          #element-desktop
-          #google-chrome
-          #warp-terminal
-          #wezterm
-          #nheko
-          #resilio-sync
-          #signal-desktop
-          #keepassxc
         ];
 
         # This would overwrite /etc/shells, so leaving this commented for now
@@ -58,9 +38,76 @@
         # I'd like to not use homebrew, but nice to have a fallback if there are packages 
         # not available in nix
         homebrew = {
-          enable = false;
+          enable = true;
+          global = {
+            autoUpdate = true;
+          };
+          onActivation = {
+            autoUpdate = true;
+            cleanup = "uninstall";
+            upgrade = true;
+          };
           casks = [
-            #"wezterm"
+            {
+              name = "brave-browser";
+              greedy = true;
+            }
+            {
+              name = "cloudflare-warp";
+              greedy = true;
+            }
+            {
+              name = "element";
+              greedy = true;
+            }
+            {
+              name = "font-hack-nerd-font";
+              greedy = true;
+            }
+            {
+              name = "font-inconsolata";
+              greedy = true;
+            }
+            {
+              name = "google-chrome";
+              greedy = true;
+            }
+            {
+              name = "google-drive";
+              greedy = true;
+            }
+            {
+              name = "keepassxc";
+              greedy = true;
+            }
+            {
+              name = "nheko";
+              greedy = true;
+            }
+            {
+              name = "rancher";
+              greedy = true;
+            }
+            {
+              name = "resilio-sync";
+              greedy = true;
+            }
+            {
+              name = "scroll-reverser";
+              greedy = true;
+            }
+            {
+              name = "signal";
+              greedy = true;
+            }
+            {
+              name = "warp";
+              greedy = true;
+            }
+            {
+              name = "wezterm";
+              greedy = true;
+            }
           ];
         };
 

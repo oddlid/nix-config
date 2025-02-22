@@ -23,6 +23,7 @@
     # Extra entries to add to PATH
     sessionPath = [
       "/opt/homebrew/bin"
+      "$HOME/.rd/bin"
     ];
 
     sessionVariables = {
@@ -66,67 +67,6 @@
   };
 
   programs = {
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      enableVteIntegration = true;
-      autosuggestion = {
-        enable = true;
-        strategy = [
-          "history"
-        ];
-      };
-      history = {
-        append = false;
-        expireDuplicatesFirst = true;
-        extended = true;
-        save = 100000;
-        saveNoDups = true;
-        share = true;
-      };
-      historySubstringSearch = {
-        enable = true;
-      };
-      localVariables = { };
-      oh-my-zsh = {
-        enable = true;
-        extraConfig = ''
-          zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 github
-        '';
-        plugins = [
-          "alias-finder"
-          "aliases"
-          "dircycle"
-          "docker"
-          "encode64"
-          "extract"
-          "fzf"
-          "git"
-          "golang"
-          "helm"
-          "isodate"
-          "macos"
-          "nmap"
-          "rsync"
-          "safe-paste"
-          "systemadmin"
-          "tmux"
-          "transfer"
-          "universalarchive"
-          "urltools"
-        ];
-        theme = "crcandy";
-      };
-      syntaxHighlighting = {
-        enable = true;
-        highlighters = [
-          "brackets"
-        ];
-        patterns = { };
-        styles = { };
-      };
-    };
-
     bash = {
       enable = true;
       enableCompletion = true;
@@ -324,6 +264,68 @@
     wezterm = {
       enable = false;
     };
+
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      enableVteIntegration = true;
+      autosuggestion = {
+        enable = true;
+        strategy = [
+          "history"
+        ];
+      };
+      history = {
+        append = false;
+        expireDuplicatesFirst = true;
+        extended = true;
+        save = 100000;
+        saveNoDups = true;
+        share = true;
+      };
+      historySubstringSearch = {
+        enable = true;
+      };
+      localVariables = { };
+      oh-my-zsh = {
+        enable = true;
+        extraConfig = ''
+          zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 github
+        '';
+        plugins = [
+          "alias-finder"
+          "aliases"
+          "dircycle"
+          "docker"
+          "encode64"
+          "extract"
+          "fzf"
+          "git"
+          "golang"
+          "helm"
+          "isodate"
+          "macos"
+          "nmap"
+          "rsync"
+          "safe-paste"
+          "systemadmin"
+          "tmux"
+          "transfer"
+          "universalarchive"
+          "urltools"
+        ];
+        theme = "crcandy";
+      };
+      syntaxHighlighting = {
+        enable = true;
+        highlighters = [
+          "brackets"
+        ];
+        patterns = { };
+        styles = { };
+      };
+    };
+
   };
 
   services = {
