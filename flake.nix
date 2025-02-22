@@ -49,7 +49,23 @@
           };
           casks = [
             {
+              name = "adobe-digital-editions";
+              greedy = true;
+            }
+            {
+              name = "android-studio";
+              greedy = true;
+            }
+            {
               name = "brave-browser";
+              greedy = true;
+            }
+            {
+              name = "calibre";
+              greedy = true;
+            }
+            {
+              name = "chirp";
               greedy = true;
             }
             {
