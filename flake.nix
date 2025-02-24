@@ -127,8 +127,13 @@
           ];
         };
 
-        # Necessary for using flakes on this system.
-        nix.settings.experimental-features = "nix-command flakes";
+        nix = {
+          #optimize.automatic = true; # suggested, but doesn't exist...
+          settings = {
+            experimental-features = "nix-command flakes"; # Necessary for using flakes on this system.
+            trusted-users = [ "oddee" ];
+          };
+        };
 
         # Enable alternative shell support in nix-darwin.
         # programs.fish.enable = true;
