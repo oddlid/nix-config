@@ -132,6 +132,14 @@
       };
     };
 
+    gh = {
+      enable = true;
+      settings = {
+        aliases = { };
+        editor = "nvim";
+      };
+    };
+
     git = {
       enable = true;
       aliases = {
