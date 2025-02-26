@@ -201,12 +201,28 @@
       settings = { };
     };
 
+    mbsync = {
+      enable = true;
+    };
+
+    msmtp = {
+      enable = true;
+    };
+
+    neomutt = {
+      enable = true;
+    };
+
     neovim = {
       enable = true;
       defaultEditor = true;
     };
 
     nix-your-shell = {
+      enable = true;
+    };
+
+    notmuch = {
       enable = true;
     };
 
