@@ -117,6 +117,10 @@
               greedy = true;
             }
             {
+              name = "tuta-mail";
+              greedy = true;
+            }
+            {
               name = "warp";
               greedy = true;
             }

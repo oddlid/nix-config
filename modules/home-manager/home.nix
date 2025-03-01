@@ -2,6 +2,130 @@
 {
   # For all possible options, see: https://nix-community.github.io/home-manager/options.xhtml
 
+  accounts = {
+    # calendar = {
+    #   accounts = {
+    #     gmail_oddebb = { };
+    #   };
+    # };
+
+    # contact = {
+    #   accounts = {
+    #     gmail_oddebb = { };
+    #   };
+    # };
+
+    email = {
+      accounts = {
+        gmail_oddebb = {
+          primary = true;
+          address = "oddebb@gmail.com";
+          flavor = "gmail.com";
+          realName = "Odd E. Ebbesen";
+
+          # TODO: see if I need to set this?
+          # folders = {
+          #   drafts = "Drafts";
+          #   inbox = "Inbox";
+          #   sent = "Sent";
+          #   trash = "Trash";
+          # };
+
+          # The only way I could manage to get this to work, was to disable it here, then create the mail directories manually,
+          # first run "notmuch", "notmuch new", and then "gmi init <mail-addr>".
+          # How to get the neomutt integration working is still TBD.
+          lieer = {
+            enable = false;
+            settings = {
+              drop_non_existing_labels = true;
+              timeout = 600;
+              # Service. Not sure if it works on macOS or is just systemd?
+              # sync = {
+              #   enable = false;
+              # };
+            };
+          };
+
+          neomutt = {
+            enable = true;
+            extraConfig = ''
+              # Must override spoolfile, or set virtual_spool_file, since home-manager sets it to "+Inbox", which doesn't work with the notmuch setup
+              #set spoolfile = "Inbox"
+              set virtual_spool_file = yes
+              set nm_exclude_tags = "spam"
+              set index_format='%4C %Z %(%Y-%m-%d %H:%M) %-15.15L %s [%g]'
+
+              macro index $ "<shell-escape>cd ~/Maildir/gmail_oddebb/; gmi sync<enter>" "run lieer to sync oddebb@gmail.com"
+              macro index \Cf "<vfolder-from-query>" "show only messages matching a notmuch pattern"
+              #macro index A "<modify-labels>+archive -unread -inbox<enter>"        # tag as Archived
+              #macro index I "<modify-labels>-inbox -unread<enter>"                 # removed from inbox
+              #macro index S "<modify-labels-then-hide>-inbox -unread +junk<enter>" # tag as Junk mail
+              #macro index + "<modify-labels>+*<enter><sync-mailbox>"               # tag as starred
+              #macro index - "<modify-labels>-*<enter><sync-mailbox>"               # tag as unstarred
+
+              bind index,pager l modify-labels
+
+              bind index,pager X change-vfolder
+
+              # sidebar bindings
+              bind index <left> sidebar-prev          # got to previous folder in sidebar
+              bind index <right> sidebar-next         # got to next folder in sidebar
+              bind index <space> sidebar-open         # open selected folder from sidebar
+            '';
+            # mailboxName = "Inbox";
+            # mailboxType = "maildir";
+            sendMailCommand = "gmi send -t -C /Users/oddee/Maildir/gmail_oddebb";
+            showDefaultMailbox = false;
+          };
+
+          notmuch = {
+            enable = true;
+            neomutt = {
+              enable = true;
+              virtualMailboxes = [
+                {
+                  name = "Inbox";
+                  query = "(tag:inbox -tag:promotions -tag:social -tag:updates -tag:forums) OR (tag:inbox and tag:flagged)";
+                }
+                {
+                  name = "Promotions";
+                  query = "tag:promotions";
+                }
+                {
+                  name = "Social";
+                  query = "tag:social";
+                }
+                {
+                  name = "Updates";
+                  query = "tag:updates";
+                }
+                {
+                  name = "Forums";
+                  query = "tag:forums";
+                }
+                {
+                  name = "Starred";
+                  query = "tag:flagged";
+                }
+                {
+                  name = "Sent";
+                  query = "tag:sent";
+                }
+                {
+                  name = "Archive";
+                  query = "not tag:inbox and not tag:spam";
+                }
+              ];
+            };
+          };
+
+          passwordCommand = "echo TODO";
+
+        };
+      };
+    };
+  };
+
   home = {
     stateVersion = "25.05";
 
@@ -201,16 +325,26 @@
       settings = { };
     };
 
-    mbsync = {
+    lieer = {
       enable = true;
     };
 
-    msmtp = {
-      enable = true;
-    };
+    # mbsync = {
+    #   enable = false;
+    # };
+
+    # msmtp = {
+    #   enable = false;
+    # };
 
     neomutt = {
       enable = true;
+      sidebar = {
+        enable = true;
+      };
+      sort = "reverse-last-date-received";
+      unmailboxes = true;
+      vimKeys = false;
     };
 
     neovim = {
