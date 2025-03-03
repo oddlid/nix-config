@@ -209,6 +209,8 @@
 
     dircolors = {
       enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
 
     direnv = {
@@ -444,6 +446,9 @@
       historySubstringSearch = {
         enable = true;
       };
+      initExtraBeforeCompInit = ''
+        eval "$(dircolors ~/.dircolors)"
+      '';
       localVariables = { };
       oh-my-zsh = {
         enable = true;
