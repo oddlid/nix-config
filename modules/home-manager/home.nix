@@ -446,9 +446,9 @@
       historySubstringSearch = {
         enable = true;
       };
-      initExtraBeforeCompInit = ''
-        eval "$(dircolors ~/.dircolors)"
-      '';
+      # initExtraBeforeCompInit = ''
+      #   eval "$(dircolors ~/.dircolors)"
+      # '';
       localVariables = { };
       oh-my-zsh = {
         enable = true;

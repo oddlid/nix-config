@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +22,7 @@
     };
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nixvim }:
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nixvim, lix-module }:
     let
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
@@ -26,6 +30,7 @@
         # Think I want to just have the bare minimum shell tools here, and solve 
         # the rest with home-manager.
         environment.systemPackages = with pkgs; [
+          coreutils-full
           devenv
           git
           vim
@@ -192,6 +197,7 @@
         "odd-mbp-m1" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
+            lix-module.nixosModules.default
             configuration
             home-manager.darwinModules.home-manager
             {
