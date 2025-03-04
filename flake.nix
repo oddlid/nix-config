@@ -132,6 +132,14 @@
               greedy = true;
             }
             {
+              name = "utm";
+              greedy = true;
+            }
+            {
+              name = "vlc";
+              greedy = true;
+            }
+            {
               name = "warp";
               greedy = true;
             }
