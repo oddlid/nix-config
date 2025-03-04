@@ -34,6 +34,7 @@
           devenv
           git
           nodejs_23 # Common for a lot of nvim stuff, so might just always have it
+          rclone
           vim
           zsh
         ];
