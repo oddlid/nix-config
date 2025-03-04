@@ -122,6 +122,10 @@
               greedy = true;
             }
             {
+              name = "tidal";
+              greedy = true;
+            }
+            {
               name = "tuta-mail";
               greedy = true;
             }
