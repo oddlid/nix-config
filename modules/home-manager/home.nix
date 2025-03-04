@@ -33,7 +33,7 @@
 
           # The only way I could manage to get this to work, was to disable it here, then create the mail directories manually,
           # first run "notmuch", "notmuch new", and then "gmi init <mail-addr>".
-          # How to get the neomutt integration working is still TBD.
+          # How to get the neomutt integration working well is still TBD.
           lieer = {
             enable = false;
             settings = {
@@ -55,7 +55,7 @@
               set nm_exclude_tags = "spam"
               set index_format='%4C %Z %(%Y-%m-%d %H:%M) %-15.15L %s [%g]'
 
-              macro index $ "<shell-escape>cd ~/Maildir/gmail_oddebb/; gmi sync<enter>" "run lieer to sync oddebb@gmail.com"
+              macro index $ "<shell-escape>cd ${config.accounts.email.maildirBasePath}/${config.accounts.email.accounts.gmail_oddebb.maildir.path}; gmi sync<enter>" "run lieer to sync oddebb@gmail.com"
               macro index \Cf "<vfolder-from-query>" "show only messages matching a notmuch pattern"
               #macro index A "<modify-labels>+archive -unread -inbox<enter>"        # tag as Archived
               #macro index I "<modify-labels>-inbox -unread<enter>"                 # removed from inbox
@@ -74,7 +74,7 @@
             '';
             # mailboxName = "Inbox";
             # mailboxType = "maildir";
-            sendMailCommand = "gmi send -t -C /Users/oddee/Maildir/gmail_oddebb";
+            sendMailCommand = "gmi send -t -C ${config.accounts.email.maildirBasePath}/${config.accounts.email.accounts.gmail_oddebb.maildir.path}";
             showDefaultMailbox = false;
           };
 
