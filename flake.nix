@@ -152,9 +152,10 @@
 
         nix = {
           #optimize.automatic = true; # suggested, but doesn't exist...
+          linux-builder.enable = true;
           settings = {
             experimental-features = "nix-command flakes"; # Necessary for using flakes on this system.
-            trusted-users = [ "oddee" ];
+            trusted-users = [ "@admin" "oddee" ];
           };
         };
 
