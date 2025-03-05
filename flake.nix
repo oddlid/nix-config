@@ -165,6 +165,10 @@
                 cores = 6;
               };
             };
+            systems = [
+              "x86_64-linux"
+              "aarch64-linux"
+            ];
           };
           settings = {
             experimental-features = "nix-command flakes"; # Necessary for using flakes on this system.
