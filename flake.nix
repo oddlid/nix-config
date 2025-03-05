@@ -157,6 +157,7 @@
             ephemeral = true;
             maxJobs = 4;
             config = {
+              nix.settings.experimental-features = "nix-command flakes";
               virtualisation = {
                 darwin-builder = {
                   diskSize = 40 * 1024;
