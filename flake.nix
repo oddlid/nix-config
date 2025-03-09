@@ -75,10 +75,10 @@
               name = "chirp";
               greedy = true;
             }
-            {
-              name = "cloudflare-warp";
-              greedy = true;
-            }
+            # {
+            #   name = "cloudflare-warp";
+            #   greedy = true;
+            # }
             {
               name = "element";
               greedy = true;
@@ -124,11 +124,19 @@
               greedy = true;
             }
             {
+              name = "tailscale";
+              greedy = true;
+            }
+            {
               name = "tidal";
               greedy = true;
             }
             {
               name = "tuta-mail";
+              greedy = true;
+            }
+            {
+              name = "vlc";
               greedy = true;
             }
             {
@@ -155,7 +163,18 @@
           linux-builder = {
             enable = true;
             ephemeral = true;
-            maxJobs = 4;
+            # Not quite sure how this option works in this context, but when trying to build conduwuit for aarch64-linux in the builder,
+            # I found out, after hours of googling, that I need to pass "--max-jobs 0" to nix build, to be sure _only_ the VM does the building.
+            # Without it, it seems macOS was building in parallel with the VM, using the VM binaries (bash), that would ofc not run on macOS,
+            # leading to errors that took I while to figure out.
+            # So, what I've learnt, is:
+            # --max-jobs 0 - disable local builds and only use remote builders
+            # --option builders '' / --builders '' - disable remote builders and only use local
+            # --option substitute false - disable remote builders and only use local
+            #
+            # To shut down the VM, run "ssh builder@linux-builder 'shutdown now'".
+            # Seems though, that the VM is started again automatically, but at least it fres some RAM.
+            maxJobs = 2;
             config = {
               nix.settings.experimental-features = "nix-command flakes";
               virtualisation = {
