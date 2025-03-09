@@ -45,7 +45,7 @@
         # I'd like to not use homebrew, but nice to have a fallback if there are packages 
         # not available in nix
         homebrew = {
-          enable = false;
+          enable = true;
           global = {
             autoUpdate = true;
           };
