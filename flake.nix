@@ -158,6 +158,14 @@
           ];
         };
 
+        # Tip from @ofalvai:matrix.org in the Nix on macOS channel, at 2025-03-09, to make the linux-builder service not start automatically:
+        # launchd.daemons.linux-builder = {
+        #   serviceConfig = {
+        #     KeepAlive = lib.mkForce false;
+        #     RunAtLoad = lib.mkForce false;
+        #   };
+        # };
+
         nix = {
           #optimize.automatic = true; # suggested, but doesn't exist...
           linux-builder = {
