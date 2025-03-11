@@ -17,8 +17,16 @@
 
     email = {
       accounts = {
-        gmail_oddebb = {
+        oddware_odd = {
           primary = true;
+          address = "odd@oddware.net";
+        };
+        oddware_git = {
+          primary = false;
+          address = "git@oddware.net";
+        };
+        gmail_oddebb = {
+          primary = false;
           address = "oddebb@gmail.com";
           flavor = "gmail.com";
           realName = "Odd E. Ebbesen";
@@ -271,20 +279,28 @@
       aliases = {
         st = "status";
         ls-untracked = "!git ls-files --others --exclude-standard";
+        pushall = "!git remote | xargs -L1 git push --all";
+        pushreview = "push origin HEAD:refs/for/master";
+        pushdraft = "push origin HEAD:refs/drafts/master";
+        count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #";
       };
+      # Only one diff highlighter can be enabled at a time
       delta = {
+        enable = false;
+      };
+      diff-highlight = {
+        enable = false;
+      };
+      diff-so-fancy = {
         enable = true;
       };
-      # Cannot be enabled at the same time as delta
-      # diff-highlight = {
-      #   enable = true;
-      # };
-      # diff-so-fancy = {
-      #   enable = true;
-      # };
-      extraConfig = { };
+      extraConfig = {
+        pull = {
+          rebase = true;
+        };
+      };
       lfs.enable = true;
-      userEmail = "oddebb@gail.com";
+      userEmail = "git@oddware.net";
       userName = "Odd E. Ebbesen";
     };
 
