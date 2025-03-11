@@ -18,15 +18,17 @@
     email = {
       accounts = {
         oddware_odd = {
-          primary = true;
+          primary = false;
           address = "odd@oddware.net";
+          realName = "Odd E. Ebbesen";
         };
         oddware_git = {
           primary = false;
           address = "git@oddware.net";
+          realName = "Odd E. Ebbesen";
         };
         gmail_oddebb = {
-          primary = false;
+          primary = true;
           address = "oddebb@gmail.com";
           flavor = "gmail.com";
           realName = "Odd E. Ebbesen";
