@@ -291,10 +291,10 @@
         enable = false;
       };
       diff-highlight = {
-        enable = false;
+        enable = true;
       };
       diff-so-fancy = {
-        enable = true;
+        enable = false;
       };
       extraConfig = {
         pull = {
