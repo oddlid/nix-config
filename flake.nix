@@ -54,6 +54,9 @@
             cleanup = "uninstall";
             upgrade = true;
           };
+	  brews = [
+	    "libolm" # needed for developing with mautrix-go, remove when done
+	  ];
           casks = [
             {
               name = "adobe-digital-editions";
@@ -103,9 +106,6 @@
               name = "keepassxc";
               greedy = true;
             }
-	    {
-	      name = "libolm"; # needed for developing with mautrix-go, remove when done
-	    }
             {
               name = "nheko";
               greedy = true;
