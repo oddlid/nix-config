@@ -103,6 +103,9 @@
               name = "keepassxc";
               greedy = true;
             }
+	    {
+	      name = "libolm"; # needed for developing with mautrix-go, remove when done
+	    }
             {
               name = "nheko";
               greedy = true;
