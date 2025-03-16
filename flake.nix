@@ -54,9 +54,9 @@
             cleanup = "uninstall";
             upgrade = true;
           };
-	  brews = [
-	    "libolm" # needed for developing with mautrix-go, remove when done
-	  ];
+          brews = [
+            # "libolm" # needed for developing with mautrix-go, remove when done
+          ];
           casks = [
             {
               name = "adobe-digital-editions";
