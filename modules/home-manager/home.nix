@@ -464,6 +464,11 @@
       historySubstringSearch = {
         enable = true;
       };
+      initExtra = ''
+        if [ -x /opt/homebrew/bin/tailscale ]; then 
+          source <(/opt/homebrew/bin/tailscale completion zsh)
+        fi
+      '';
       # initExtraBeforeCompInit = ''
       #   eval "$(dircolors ~/.dircolors)"
       # '';
