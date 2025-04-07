@@ -66,6 +66,10 @@
               greedy = true;
             }
             {
+              name = "amethyst";
+              greedy = true;
+            }
+            {
               name = "android-studio";
               greedy = true;
             }
