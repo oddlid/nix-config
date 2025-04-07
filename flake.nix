@@ -30,11 +30,13 @@
         # Think I want to just have the bare minimum shell tools here, and solve 
         # the rest with home-manager.
         environment.systemPackages = with pkgs; [
+          btop
           coreutils-full
           devenv
           ghostscript
           git
           imagemagick
+          mc
           nodejs_23 # Common for a lot of nvim stuff, so might just always have it
           rclone
           tree-sitter
