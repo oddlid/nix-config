@@ -228,6 +228,15 @@
       nix-direnv.enable = true;
     };
 
+    eza = {
+      enable = true;
+      colors = "auto";
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      git = true;
+      icons = "auto";
+    };
+
     fd = {
       enable = true;
       hidden = true;

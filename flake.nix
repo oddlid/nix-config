@@ -64,13 +64,17 @@
           ];
           casks = [
             {
-              name = "adobe-digital-editions";
+              name = "nikitabobko/tap/aerospace";
               greedy = true;
             }
             {
-              name = "amethyst";
+              name = "adobe-digital-editions";
               greedy = true;
             }
+            # {
+            #   name = "amethyst";
+            #   greedy = true;
+            # }
             {
               name = "android-studio";
               greedy = true;
