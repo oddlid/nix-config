@@ -100,6 +100,10 @@
               greedy = true;
             }
             {
+              name = "font-jetbrains-mono";
+              greedy = true;
+            }
+            {
               name = "font-inconsolata";
               greedy = true;
             }
