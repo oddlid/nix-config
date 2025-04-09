@@ -64,7 +64,7 @@
           ];
           casks = [
             {
-              name = "nikitabobko/tap/aerospace";
+              name = "aerospace";
               greedy = true;
             }
             {

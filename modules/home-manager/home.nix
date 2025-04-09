@@ -209,6 +209,9 @@
 
     bat = {
       enable = true;
+      config = {
+        theme = "Solarized (dark)";
+      };
       extraPackages = with pkgs.bat-extras; [
         batdiff
         batman
@@ -217,6 +220,7 @@
       ];
     };
 
+    # Not really needed anymore, after enabling eza
     dircolors = {
       enable = true;
       enableBashIntegration = true;
@@ -250,9 +254,9 @@
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
-      changeDirWidgetCommand = "fd --type d";
+      changeDirWidgetCommand = "fd --type d --strip-cwd-prefix --hidden -E .git -E .direnv";
       changeDirWidgetOptions = [
-        "--preview 'tree -C {} | head -200'"
+        "--preview 'eza --tree --color=always {} | head -200'"
       ];
       # Taken from the Solarized example here: https://github.com/junegunn/fzf/wiki/Color-schemes
       # In tmux, terminal must be tmux-256color, and the term overrides must also be set as below for it to work properly
@@ -270,8 +274,14 @@
         prompt = "#719e07";
         "hl+" = "#719e07";
       };
-      defaultCommand = "fd --type f";
-      fileWidgetCommand = "fd --type f";
+      defaultCommand = "fd --type f --strip-cwd-prefix --hidden -E .git -E .direnv";
+      defaultOptions = [
+        "--preview 'if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'"
+      ];
+      fileWidgetCommand = "fd --type f --strip-cwd-prefix --hidden -E .git -E .direnv";
+      fileWidgetOptions = [
+        "--preview 'if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'"
+      ];
       tmux = {
         enableShellIntegration = true;
       };
@@ -297,10 +307,14 @@
       };
       # Only one diff highlighter can be enabled at a time
       delta = {
-        enable = false;
+        enable = true;
+        options = {
+          navigate = true;
+          side-by-side = true;
+        };
       };
       diff-highlight = {
-        enable = true;
+        enable = false;
       };
       diff-so-fancy = {
         enable = false;
@@ -474,9 +488,11 @@
         enable = true;
       };
       initExtra = ''
-        if [ -x /opt/homebrew/bin/tailscale ]; then 
-          source <(/opt/homebrew/bin/tailscale completion zsh)
+        if [ -x "$(which tailscale)" ]; then
+          source <("$(which tailscale)" completion zsh)
         fi
+
+        source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
       '';
       # initExtraBeforeCompInit = ''
       #   eval "$(dircolors ~/.dircolors)"
