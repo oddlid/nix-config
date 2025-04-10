@@ -275,9 +275,9 @@
         "hl+" = "#719e07";
       };
       defaultCommand = "fd --type f --strip-cwd-prefix --hidden -E .git -E .direnv";
-      defaultOptions = [
-        "--preview 'if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'"
-      ];
+      # defaultOptions = [
+      #   "--preview 'if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'"
+      # ];
       fileWidgetCommand = "fd --type f --strip-cwd-prefix --hidden -E .git -E .direnv";
       fileWidgetOptions = [
         "--preview 'if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'"
@@ -426,9 +426,19 @@
       terminal = "tmux-256color"; # This makes the fzf colorscheme work properly
 
       plugins = with pkgs.tmuxPlugins; [
-        pain-control
+        continuum
         logging
+        pain-control
         resurrect
+        tmux-fzf
+        {
+          plugin = power-theme;
+          extraConfig = ''
+            set -g @tmux_power_theme 'moon'
+            set -g @tmux_power_prefix_highlight_pos 'LR'
+          '';
+        }
+        prefix-highlight
         yank
       ];
 
@@ -449,15 +459,16 @@
         # Status update interval
         set -g status-interval 1
         set -g renumber-windows on    # renumber windows when a window is closed
+
         # recommendations for vim-tpipeline
-        set -g status-style bg=default
-        set -g status-left-length 90
-        set -g status-right-length 90
-        set -g status-justify centre
-        set -g status-right '#{prefix_highlight}#(hostname) | %Y-%m-%d %H:%M'
-        set-window-option -g window-status-separator " "
-        set-window-option -g window-status-current-format "#[fg=colour66]#W"
-        set-window-option -g window-status-format "#W"
+        # set -g status-style bg=default
+        # set -g status-left-length 90
+        # set -g status-right-length 90
+        # set -g status-justify centre
+        # set -g status-right '#{prefix_highlight}#(hostname) | %Y-%m-%d %H:%M'
+        # set-window-option -g window-status-separator " "
+        # set-window-option -g window-status-current-format "#[fg=colour66]#W"
+        # set-window-option -g window-status-format "#W"
       '';
     };
 
