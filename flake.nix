@@ -63,20 +63,20 @@
             # "libolm" # needed for developing with mautrix-go, remove when done
           ];
           casks = [
-            {
-              name = "aerospace";
-              greedy = true;
-            }
-            {
-              name = "adobe-digital-editions";
-              greedy = true;
-            }
             # {
-            #   name = "amethyst";
+            #   name = "aerospace";
+            #   greedy = true;
+            # }
+            # {
+            #   name = "adobe-digital-editions";
+            #   greedy = true;
+            # }
+            # {
+            #   name = "android-studio";
             #   greedy = true;
             # }
             {
-              name = "android-studio";
+              name = "beeper";
               greedy = true;
             }
             {
@@ -87,12 +87,8 @@
               name = "calibre";
               greedy = true;
             }
-            {
-              name = "chirp";
-              greedy = true;
-            }
             # {
-            #   name = "cloudflare-warp";
+            #   name = "chirp";
             #   greedy = true;
             # }
             {
@@ -117,6 +113,10 @@
             }
             {
               name = "google-drive";
+              greedy = true;
+            }
+            {
+              name = "ilok-license-manager";
               greedy = true;
             }
             {
@@ -153,10 +153,6 @@
             }
             {
               name = "tuta-mail";
-              greedy = true;
-            }
-            {
-              name = "vlc";
               greedy = true;
             }
             {
