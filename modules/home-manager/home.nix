@@ -57,7 +57,7 @@
           };
 
           neomutt = {
-            enable = true;
+            enable = false;
             extraConfig = ''
               # Must override spoolfile, or set virtual_spool_file, since home-manager sets it to "+Inbox", which doesn't work with the notmuch setup
               #set spoolfile = "Inbox"
@@ -369,7 +369,7 @@
     };
 
     lieer = {
-      enable = true;
+      enable = false;
     };
 
     # mbsync = {
@@ -400,7 +400,7 @@
     };
 
     notmuch = {
-      enable = true;
+      enable = false;
     };
 
     ripgrep = {
