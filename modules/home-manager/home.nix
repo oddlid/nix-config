@@ -89,9 +89,9 @@
           };
 
           notmuch = {
-            enable = true;
+            enable = false;
             neomutt = {
-              enable = true;
+              enable = false;
               virtualMailboxes = [
                 {
                   name = "Inbox";
@@ -381,7 +381,7 @@
     # };
 
     neomutt = {
-      enable = true;
+      enable = false;
       sidebar = {
         enable = true;
       };
