@@ -71,10 +71,10 @@
             #   name = "adobe-digital-editions";
             #   greedy = true;
             # }
-            # {
-            #   name = "android-studio";
-            #   greedy = true;
-            # }
+            {
+              name = "android-studio";
+              greedy = true;
+            }
             {
               name = "beeper";
               greedy = true;
