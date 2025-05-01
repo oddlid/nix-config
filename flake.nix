@@ -120,6 +120,10 @@
               greedy = true;
             }
             {
+              name = "jump-desktop-connect";
+              greedy = true;
+            }
+            {
               name = "keepassxc";
               greedy = true;
             }
