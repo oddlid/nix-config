@@ -132,6 +132,10 @@
               greedy = true;
             }
             {
+              name = "orbstack";
+              greedy = true;
+            }
+            {
               name = "rancher";
               greedy = true;
             }
