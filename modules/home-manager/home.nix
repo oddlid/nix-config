@@ -157,7 +157,8 @@
     # Extra entries to add to PATH
     sessionPath = [
       "/opt/homebrew/bin"
-      "$HOME/.rd/bin"
+      "$HOME/.orbstack/bin"
+      # "$HOME/.rd/bin"
     ];
 
     sessionVariables = {
@@ -222,7 +223,7 @@
 
     # Not really needed anymore, after enabling eza
     dircolors = {
-      enable = true;
+      enable = false;
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
@@ -505,9 +506,9 @@
 
         source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
       '';
-      # initExtraBeforeCompInit = ''
-      #   eval "$(dircolors ~/.dircolors)"
-      # '';
+      initExtraBeforeCompInit = ''
+        fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
+      '';
       localVariables = { };
       oh-my-zsh = {
         enable = true;
