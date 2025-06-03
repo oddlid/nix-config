@@ -92,6 +92,14 @@
             #   greedy = true;
             # }
             {
+              name = "dotnet";
+              greedy = true;
+            }
+            {
+              name = "dotnet-sdk";
+              greedy = true;
+            }
+            {
               name = "element";
               greedy = true;
             }
@@ -135,10 +143,10 @@
               name = "orbstack";
               greedy = true;
             }
-            {
-              name = "rancher";
-              greedy = true;
-            }
+            # {
+            #   name = "rancher";
+            #   greedy = true;
+            # }
             {
               name = "resilio-sync";
               greedy = true;
