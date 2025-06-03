@@ -92,10 +92,6 @@
             #   greedy = true;
             # }
             {
-              name = "dotnet";
-              greedy = true;
-            }
-            {
               name = "dotnet-sdk";
               greedy = true;
             }
