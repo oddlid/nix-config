@@ -92,6 +92,10 @@
             #   greedy = true;
             # }
             {
+              name = "deskpad";
+              greedy = true;
+            }
+            {
               name = "dotnet-sdk";
               greedy = true;
             }
@@ -109,6 +113,10 @@
             }
             {
               name = "font-inconsolata";
+              greedy = true;
+            }
+            {
+              name = "ghostty";
               greedy = true;
             }
             {

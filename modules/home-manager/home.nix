@@ -172,6 +172,7 @@
       MANPAGER = "nvim +Man!";
       REPORTTIME = "5";
       TIMEFMT = "%U user, %S system, %P cpu, %*Es total";
+      DOTNET_ROOT = "/usr/local/share/dotnet";
     };
 
     # TODO: see if I need to specify these, as it seems those enabled via programs.* don't need an entry here
