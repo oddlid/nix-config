@@ -501,7 +501,7 @@
       historySubstringSearch = {
         enable = true;
       };
-      initExtra = ''
+      initContent = ''
         if [ -x "$(which tailscale)" ]; then
           source <("$(which tailscale)" completion zsh)
         fi

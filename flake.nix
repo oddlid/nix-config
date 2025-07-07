@@ -37,7 +37,7 @@
           git
           imagemagick
           mc
-          nodejs_23 # Common for a lot of nvim stuff, so might just always have it
+          nodejs_24 # Common for a lot of nvim stuff, so might just always have it
           rclone
           tree-sitter
           vim
@@ -262,6 +262,7 @@
         security.pam.services.sudo_local.touchIdAuth = true;
 
         system = {
+          primaryUser = "oddee";
           keyboard.enableKeyMapping = true;
           keyboard.remapCapsLockToEscape = true;
 
