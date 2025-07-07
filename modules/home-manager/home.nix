@@ -158,6 +158,7 @@
     sessionPath = [
       "/opt/homebrew/bin"
       "$HOME/.orbstack/bin"
+      "$HOME/.cargo/bin"
       # "$HOME/.rd/bin"
     ];
 
