@@ -60,6 +60,7 @@
             upgrade = true;
           };
           brews = [
+            "plakar" # backup system
             # "libolm" # needed for developing with mautrix-go, remove when done
           ];
           casks = [
