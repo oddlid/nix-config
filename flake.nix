@@ -157,6 +157,10 @@
               greedy = true;
             }
             {
+              name = "rustdesk";
+              greedy = true;
+            }
+            {
               name = "scroll-reverser";
               greedy = true;
             }
