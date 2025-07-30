@@ -501,16 +501,18 @@
       historySubstringSearch = {
         enable = true;
       };
-      initContent = ''
-        if [ -x "$(which tailscale)" ]; then
-          source <("$(which tailscale)" completion zsh)
-        fi
+      initContent = let 
+        zCfgBeforeCompInit = lib.mkOrder 550 ''
+          fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
+        '';
+        zCfg = lib.mkOrder 1000 ''
+          if [ -x "$(which tailscale)" ]; then
+            source <("$(which tailscale)" completion zsh)
+          fi
 
-        source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
-      '';
-      initExtraBeforeCompInit = ''
-        fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
-      '';
+          source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
+        '';
+        in lib.mkMerge [zCfgBeforeCompInit zCfg];
       localVariables = { };
       oh-my-zsh = {
         enable = true;
