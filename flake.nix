@@ -61,6 +61,7 @@
           };
           brews = [
             "plakar" # backup system
+            "cocoapods" # needed to build swift apps
             # "libolm" # needed for developing with mautrix-go, remove when done
           ];
           casks = [
