@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     darwin = {
@@ -16,13 +16,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Not in use yet, might need to be under home-manager config instead?
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixvim = {
+    #   url = "github:nix-community/nixvim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, home-manager, nixvim, lix-module }:
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, lix-module }:
     let
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
