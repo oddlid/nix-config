@@ -150,6 +150,10 @@
               name = "orbstack";
               greedy = true;
             }
+            {
+              name = "orion";
+              greedy = true;
+            }
             # {
             #   name = "rancher";
             #   greedy = true;
