@@ -135,6 +135,10 @@
               greedy = true;
             }
             {
+              name = "jump-desktop";
+              greedy = true;
+            }
+            {
               name = "jump-desktop-connect";
               greedy = true;
             }
