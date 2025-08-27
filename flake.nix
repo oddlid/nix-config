@@ -3,10 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,16 +11,23 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Not in use yet, might need to be under home-manager config instead?
-    # nixvim = {
-    #   url = "github:nix-community/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
-  outputs = inputs@{ self, darwin, nixpkgs, home-manager, lix-module }:
+  outputs = inputs@{ self, darwin, nixpkgs, home-manager, ... }:
     let
       configuration = { pkgs, ... }: {
+
+        # Lix 
+        nixpkgs.overlays = [ (final: prev: {
+          inherit (final.lixPackageSets.latest)
+            nixpkgs-review
+            nix-direnv
+            nix-eval-jobs
+            nix-fast-build
+            colmena;
+        }) ];
+        nix.package = pkgs.lixPackageSets.latest.lix;
+
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
         # Think I want to just have the bare minimum shell tools here, and solve 
@@ -158,10 +161,6 @@
               name = "orion";
               greedy = true;
             }
-            # {
-            #   name = "rancher";
-            #   greedy = true;
-            # }
             {
               name = "resilio-sync";
               greedy = true;
@@ -314,7 +313,6 @@
         "odd-mbp-m1" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            lix-module.nixosModules.default
             configuration
             home-manager.darwinModules.home-manager
             {
