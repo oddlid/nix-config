@@ -37,6 +37,7 @@
           btop
           coreutils-full
           devenv
+          dust 
           ghostscript
           git
           imagemagick
