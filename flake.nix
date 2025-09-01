@@ -52,6 +52,7 @@
             dust
             ghostscript
             git
+            hcloud
             imagemagick
             mc
             mosh
