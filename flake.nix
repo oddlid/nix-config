@@ -76,7 +76,7 @@
             };
             onActivation = {
               autoUpdate = true;
-              cleanup = "uninstall";
+              cleanup = "zap";
               upgrade = true;
             };
             brews = [
@@ -97,10 +97,10 @@
                 name = "android-studio";
                 greedy = true;
               }
-              {
-                name = "beeper";
-                greedy = true;
-              }
+              # {
+              #   name = "beeper";
+              #   greedy = true;
+              # }
               {
                 name = "brave-browser";
                 greedy = true;
@@ -113,10 +113,10 @@
               #   name = "chirp";
               #   greedy = true;
               # }
-              {
-                name = "deskpad";
-                greedy = true;
-              }
+              # {
+              #   name = "deskpad";
+              #   greedy = true;
+              # }
               {
                 name = "dotnet-sdk";
                 greedy = true;
@@ -153,10 +153,10 @@
                 name = "ilok-license-manager";
                 greedy = true;
               }
-              {
-                name = "jump-desktop";
-                greedy = true;
-              }
+              # {
+              #   name = "jump-desktop";
+              #   greedy = true;
+              # }
               {
                 name = "jump-desktop-connect";
                 greedy = true;
@@ -165,18 +165,18 @@
                 name = "keepassxc";
                 greedy = true;
               }
-              {
-                name = "nheko";
-                greedy = true;
-              }
+              # {
+              #   name = "nheko";
+              #   greedy = true;
+              # }
               {
                 name = "orbstack";
                 greedy = true;
               }
-              {
-                name = "orion";
-                greedy = true;
-              }
+              # {
+              #   name = "orion";
+              #   greedy = true;
+              # }
               {
                 name = "resilio-sync";
                 greedy = true;
@@ -221,14 +221,14 @@
                 name = "vlc";
                 greedy = true;
               }
-              {
-                name = "warp";
-                greedy = true;
-              }
-              {
-                name = "wezterm";
-                greedy = true;
-              }
+              # {
+              #   name = "warp";
+              #   greedy = true;
+              # }
+              # {
+              #   name = "wezterm";
+              #   greedy = true;
+              # }
             ];
           };
 
