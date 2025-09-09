@@ -49,6 +49,7 @@
             btop
             coreutils-full
             devenv
+            duf
             dust
             ghostscript
             git
