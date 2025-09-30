@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   # For all possible options, see: https://nix-community.github.io/home-manager/options.xhtml
 
@@ -446,6 +451,9 @@
       ];
 
       extraConfig = ''
+        # See: https://github.com/tmux/tmux/wiki/Clipboard#quick-summary
+        set -s set-clipboard on
+
         bind-key x send-prefix
         bind-key C-x last-window
         set -g default-command "$SHELL"
@@ -501,18 +509,23 @@
       historySubstringSearch = {
         enable = true;
       };
-      initContent = let 
-        zCfgBeforeCompInit = lib.mkOrder 550 ''
-          fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
-        '';
-        zCfg = lib.mkOrder 1000 ''
-          if [ -x "$(which tailscale)" ]; then
-            source <("$(which tailscale)" completion zsh)
-          fi
+      initContent =
+        let
+          zCfgBeforeCompInit = lib.mkOrder 550 ''
+            fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
+          '';
+          zCfg = lib.mkOrder 1000 ''
+            if [ -x "$(which tailscale)" ]; then
+              source <("$(which tailscale)" completion zsh)
+            fi
 
-          source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
-        '';
-        in lib.mkMerge [zCfgBeforeCompInit zCfg];
+            source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
+          '';
+        in
+        lib.mkMerge [
+          zCfgBeforeCompInit
+          zCfg
+        ];
       localVariables = { };
       oh-my-zsh = {
         enable = true;
