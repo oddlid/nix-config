@@ -453,12 +453,18 @@
       extraConfig = ''
         # See: https://github.com/tmux/tmux/wiki/Clipboard#quick-summary
         set -s set-clipboard on
+        # Ms modifies OSC 52 clipboard handling to work with mosh, see
+        # https://gist.github.com/yudai/95b20e3da66df1b066531997f982b57b
+        set -ag terminal-overrides ",xterm*:Ms=\\E]52;c%p1%.0s;%p2%s\\7"
+        set -ag terminal-overrides ",tmux*:Ms=\\E]52;c%p1%.0s;%p2%s\\7"
 
         bind-key x send-prefix
         bind-key C-x last-window
+        bind 'v' copy-mode
+        set-window-option -g mode-keys vi
         set -g default-command "$SHELL"
         set -g default-shell "$SHELL"
-        set -g terminal-overrides ',xterm-256color:Tc'
+        set -ag terminal-overrides ',xterm-256color:Tc'
         set -as terminal-overrides ',xterm*:sitm=\E[3m'
         # allow for navigating between words with option
         set-window-option -g xterm-keys on
