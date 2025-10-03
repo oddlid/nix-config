@@ -39,213 +39,10 @@
       configuration =
         { pkgs, ... }:
         {
-
-          # Lix
-          nixpkgs.overlays = [
-            (final: prev: {
-              inherit (final.lixPackageSets.latest)
-                nixpkgs-review
-                nix-direnv
-                nix-eval-jobs
-                nix-fast-build
-                colmena
-                ;
-            })
-          ];
-          nix.package = pkgs.lixPackageSets.latest.lix;
-
-          # List packages installed in system profile. To search by name, run:
-          # $ nix-env -qaP | grep wget
-          # Think I want to just have the bare minimum shell tools here, and solve
-          # the rest with home-manager.
-          environment.systemPackages = with pkgs; [
-            asn
-            btop
-            coreutils-full
-            devenv
-            duf
-            dust
-            ghostscript
-            git
-            hcloud
-            imagemagick
-            mc
-            mosh
-            nixfmt
-            nodejs_24 # Common for a lot of nvim stuff, so might just always have it
-            rclone
-            tree-sitter
-            vim
-            zsh
-          ];
+          # Most stuff that was hare, has now been split to separate files.
 
           # This would overwrite /etc/shells, so leaving this commented for now
           # environment.shells = [ pkgs.zsh ];
-
-          # I'd like to not use homebrew, but nice to have a fallback if there are packages
-          # not available in nix
-          homebrew = {
-            enable = true;
-            global = {
-              autoUpdate = true;
-            };
-            onActivation = {
-              autoUpdate = true;
-              cleanup = "zap";
-              upgrade = true;
-            };
-            brews = [
-              "plakar" # backup system
-              "cocoapods" # needed to build swift apps
-              # "libolm" # needed for developing with mautrix-go, remove when done
-            ];
-            casks = [
-              # {
-              #   name = "aerospace";
-              #   greedy = true;
-              # }
-              # {
-              #   name = "adobe-digital-editions";
-              #   greedy = true;
-              # }
-              {
-                name = "android-studio";
-                greedy = true;
-              }
-              # {
-              #   name = "beeper";
-              #   greedy = true;
-              # }
-              {
-                name = "brave-browser";
-                greedy = true;
-              }
-              {
-                name = "calibre";
-                greedy = true;
-              }
-              # {
-              #   name = "chirp";
-              #   greedy = true;
-              # }
-              # {
-              #   name = "deskpad";
-              #   greedy = true;
-              # }
-              {
-                name = "dotnet-sdk";
-                greedy = true;
-              }
-              {
-                name = "element";
-                greedy = true;
-              }
-              {
-                name = "font-hack-nerd-font";
-                greedy = true;
-              }
-              {
-                name = "font-jetbrains-mono";
-                greedy = true;
-              }
-              {
-                name = "font-inconsolata";
-                greedy = true;
-              }
-              {
-                name = "ghostty";
-                greedy = true;
-              }
-              {
-                name = "google-chrome";
-                greedy = true;
-              }
-              {
-                name = "google-drive";
-                greedy = true;
-              }
-              {
-                name = "ilok-license-manager";
-                greedy = true;
-              }
-              # {
-              #   name = "jump-desktop";
-              #   greedy = true;
-              # }
-              {
-                name = "jump-desktop-connect";
-                greedy = true;
-              }
-              {
-                name = "keepassxc";
-                greedy = true;
-              }
-              # {
-              #   name = "nheko";
-              #   greedy = true;
-              # }
-              {
-                name = "orbstack";
-                greedy = true;
-              }
-              # {
-              #   name = "orion";
-              #   greedy = true;
-              # }
-              {
-                name = "resilio-sync";
-                greedy = true;
-              }
-              {
-                name = "rustdesk";
-                greedy = true;
-              }
-              {
-                name = "scroll-reverser";
-                greedy = true;
-              }
-              {
-                name = "signal";
-                greedy = true;
-              }
-              {
-                name = "tailscale-app";
-                greedy = true;
-              }
-              {
-                name = "tidal";
-                greedy = true;
-              }
-              {
-                name = "tuta-mail";
-                greedy = true;
-              }
-              {
-                name = "utm";
-                greedy = true;
-              }
-              {
-                name = "visual-studio-code";
-                greedy = true;
-              }
-              {
-                name = "vivaldi";
-                greedy = true;
-              }
-              {
-                name = "vlc";
-                greedy = true;
-              }
-              # {
-              #   name = "warp";
-              #   greedy = true;
-              # }
-              # {
-              #   name = "wezterm";
-              #   greedy = true;
-              # }
-            ];
-          };
 
           # Tip from @ofalvai:matrix.org in the Nix on macOS channel, at 2025-03-09, to make the linux-builder service not start automatically:
           # launchd.daemons.linux-builder = {
@@ -255,53 +52,6 @@
           #   };
           # };
 
-          nix = {
-            #optimize.automatic = true; # suggested, but doesn't exist...
-            linux-builder = {
-              enable = false;
-              ephemeral = true;
-              # Not quite sure how this option works in this context, but when trying to build conduwuit for aarch64-linux in the builder,
-              # I found out, after hours of googling, that I need to pass "--max-jobs 0" to nix build, to be sure _only_ the VM does the building.
-              # Without it, it seems macOS was building in parallel with the VM, using the VM binaries (bash), that would ofc not run on macOS,
-              # leading to errors that took I while to figure out.
-              # So, what I've learnt, is:
-              # --max-jobs 0 - disable local builds and only use remote builders
-              # --option builders '' / --builders '' - disable remote builders and only use local
-              # --option substitute false - disable remote builders and only use local
-              #
-              # To shut down the VM, run "ssh builder@linux-builder 'shutdown now'".
-              # Seems though, that the VM is started again automatically, but at least it fres some RAM.
-              maxJobs = 2;
-              config = {
-                nix.settings.experimental-features = "nix-command flakes";
-                virtualisation = {
-                  darwin-builder = {
-                    diskSize = 40 * 1024;
-                    memorySize = 8 * 1024;
-                  };
-                  cores = 6;
-                };
-              };
-              systems = [
-                "x86_64-linux"
-                "aarch64-linux"
-              ];
-            };
-            settings = {
-              experimental-features = "nix-command flakes"; # Necessary for using flakes on this system.
-              trusted-users = [
-                "@admin"
-                "oddee"
-              ];
-              substituters = [
-                "https://cache.lix.systems"
-              ];
-              trusted-public-keys = [
-                "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
-              ];
-            };
-          };
-
           # Enable alternative shell support in nix-darwin.
           # programs.fish.enable = true;
           # Create /etc/zshrc that loads the nix-darwin environment.
@@ -309,45 +59,6 @@
             enable = true;
           };
 
-          # Set Git commit hash for darwin-version.
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-
-          # The platform the configuration will be used on.
-          nixpkgs.hostPlatform = "aarch64-darwin";
-
-          # Touch-id for sudo
-          #security.pam.enableSudoTouchIdAuth = true;
-          security.pam.services.sudo_local.touchIdAuth = true;
-
-          system = {
-            primaryUser = "oddee";
-            keyboard.enableKeyMapping = true;
-            keyboard.remapCapsLockToEscape = true;
-
-            defaults = {
-              finder = {
-                AppleShowAllExtensions = true;
-                ShowPathbar = true;
-                FXEnableExtensionChangeWarning = false;
-                _FXShowPosixPathInTitle = true;
-              };
-            };
-            # Tab between form controls and F-row that behaves as F1-F12
-            # Note: gives me error about NSGlobalDomain not existing
-            # NSGlobalDomain = {
-            #   AppleKeyboardUIMode = 3;
-            #   "com.apple.keyboard.fnState" = true;
-            # };
-          };
-
-          # users.users.oddee = {
-          #     name = "oddee";
-          #     home = "/Users/oddee";
-          # };
-
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
-          system.stateVersion = 6;
         };
     in
     {
@@ -357,6 +68,12 @@
         "odd-mbp-m1" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
+            ./nix-cfg.nix
+            ./hosts/odd-mbp-m1/systempackages.nix
+            ./hosts/odd-mbp-m1/homebrew.nix
+            ./hosts/odd-mbp-m1/security.nix
+            ./hosts/odd-mbp-m1/nixpkgs.nix
+            (import ./hosts/odd-mbp-m1/system.nix { inherit self; })
             configuration
             nix-homebrew.darwinModules.nix-homebrew
             {
@@ -372,7 +89,39 @@
               home-manager = {
                 useGlobalPkgs = false;
                 useUserPackages = true;
-                users.oddee = import ./modules/home-manager/home.nix;
+                users.oddee = import ./hosts/odd-mbp-m1/home.nix;
+              };
+              users.users.oddee.home = "/Users/oddee";
+            }
+          ];
+          specialArgs = { inherit inputs; };
+        };
+
+        "odd-mbp" = darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          modules = [
+            ./nix-cfg.nix
+            ./hosts/odd-mbp/systempackages.nix
+            ./hosts/odd-mbp/homebrew.nix
+            ./hosts/odd-mbp/security.nix
+            ./hosts/odd-mbp/nixpkgs.nix
+            (import ./hosts/odd-mbp/system.nix { inherit self; })
+            configuration
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = true;
+                user = "oddee";
+                autoMigrate = true;
+              };
+            }
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                users.oddee = import ./hosts/odd-mbp/home.nix;
               };
               users.users.oddee.home = "/Users/oddee";
             }
