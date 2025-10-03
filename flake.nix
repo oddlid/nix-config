@@ -11,6 +11,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
   outputs =
@@ -19,6 +30,9 @@
       darwin,
       nixpkgs,
       home-manager,
+      nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
       ...
     }:
     let
@@ -338,6 +352,15 @@
           system = "aarch64-darwin";
           modules = [
             configuration
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                enable = true;
+                enableRosetta = true;
+                user = "oddee";
+                autoMigrate = true;
+              };
+            }
             home-manager.darwinModules.home-manager
             {
               home-manager = {
