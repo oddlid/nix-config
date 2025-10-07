@@ -559,7 +559,7 @@
         theme = "crcandy";
       };
       syntaxHighlighting = {
-        enable = true;
+        enable = false;
         highlighters = [
           "brackets"
         ];
