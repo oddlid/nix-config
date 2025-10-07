@@ -490,6 +490,8 @@
     zsh = {
       enable = true;
       enableCompletion = true;
+      # Add -C to compinit to bypass compaudit and speed things up
+      completionInit = "autoload -U compinit && compinit -C";
       enableVteIntegration = true;
       autosuggestion = {
         enable = true;
@@ -508,23 +510,24 @@
       historySubstringSearch = {
         enable = true;
       };
-      initContent =
-        let
-          zCfgBeforeCompInit = lib.mkOrder 550 ''
-            #fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
-          '';
-          zCfg = lib.mkOrder 1000 ''
-            #if [ -x "$(which tailscale)" ]; then
-            #  source <("$(which tailscale)" completion zsh)
-            #fi
-
-            source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
-          '';
-        in
-        lib.mkMerge [
-          zCfgBeforeCompInit
-          zCfg
-        ];
+      # initContent =
+      #   let
+      #     zCfgBeforeCompInit = lib.mkOrder 550 ''
+      #       #fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
+      #     '';
+      #     zCfg = lib.mkOrder 1000 ''
+      #       #if [ -x "$(which tailscale)" ]; then
+      #       #  source <("$(which tailscale)" completion zsh)
+      #       #fi
+      #
+      #       # This turned out to take a lot of time, and I don't really need on on odd-mbp
+      #       #source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
+      #     '';
+      #   in
+      #   lib.mkMerge [
+      #     zCfgBeforeCompInit
+      #     zCfg
+      #   ];
       localVariables = { };
       oh-my-zsh = {
         enable = false;
