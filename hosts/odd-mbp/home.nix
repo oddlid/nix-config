@@ -511,12 +511,12 @@
       initContent =
         let
           zCfgBeforeCompInit = lib.mkOrder 550 ''
-            fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
+            #fpath+=(/Applications/OrbStack.app/Contents/Resources/completions/zsh)
           '';
           zCfg = lib.mkOrder 1000 ''
-            if [ -x "$(which tailscale)" ]; then
-              source <("$(which tailscale)" completion zsh)
-            fi
+            #if [ -x "$(which tailscale)" ]; then
+            #  source <("$(which tailscale)" completion zsh)
+            #fi
 
             source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
           '';
@@ -527,32 +527,32 @@
         ];
       localVariables = { };
       oh-my-zsh = {
-        enable = true;
-        # extraConfig = ''
-        #   zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 github
-        # '';
-        # plugins = [
-        #   "alias-finder"
-        #   "aliases"
-        #   "dircycle"
-        #   "docker"
-        #   "encode64"
-        #   "extract"
-        #   "fzf"
-        #   "git"
-        #   "golang"
-        #   "helm"
-        #   "isodate"
-        #   "macos"
-        #   "nmap"
-        #   "rsync"
-        #   "safe-paste"
-        #   "systemadmin"
-        #   "tmux"
-        #   "transfer"
-        #   "universalarchive"
-        #   "urltools"
-        # ];
+        enable = false;
+        extraConfig = ''
+          zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 github
+        '';
+        plugins = [
+          "alias-finder"
+          "aliases"
+          "dircycle"
+          "docker"
+          "encode64"
+          "extract"
+          "fzf"
+          "git"
+          "golang"
+          "helm"
+          "isodate"
+          "macos"
+          "nmap"
+          "rsync"
+          "safe-paste"
+          "systemadmin"
+          "tmux"
+          "transfer"
+          "universalarchive"
+          "urltools"
+        ];
         theme = "crcandy";
       };
       syntaxHighlighting = {
