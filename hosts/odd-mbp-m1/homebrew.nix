@@ -15,8 +15,9 @@
       upgrade = true;
     };
     brews = [
-      "plakar" # backup system
       "cocoapods" # needed to build swift apps
+      "plakar" # backup system
+      "syncthing"
       # "libolm" # needed for developing with mautrix-go, remove when done
     ];
     casks = [

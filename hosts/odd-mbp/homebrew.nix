@@ -16,6 +16,7 @@
     };
     brews = [
       "plakar" # backup system
+      "syncthing"
     ];
     casks = [
       {
