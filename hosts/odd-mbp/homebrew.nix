@@ -19,18 +19,18 @@
       "syncthing"
     ];
     casks = [
-      {
-        name = "font-hack-nerd-font";
-        greedy = true;
-      }
-      {
-        name = "font-jetbrains-mono";
-        greedy = true;
-      }
-      {
-        name = "font-inconsolata";
-        greedy = true;
-      }
+      # {
+      #   name = "font-hack-nerd-font";
+      #   greedy = true;
+      # }
+      # {
+      #   name = "font-jetbrains-mono";
+      #   greedy = true;
+      # }
+      # {
+      #   name = "font-inconsolata";
+      #   greedy = true;
+      # }
       {
         name = "ghostty";
         greedy = true;
