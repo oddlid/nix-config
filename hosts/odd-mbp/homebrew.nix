@@ -35,18 +35,18 @@
         name = "ghostty";
         greedy = true;
       }
-      {
-        name = "google-drive";
-        greedy = true;
-      }
+      # {
+      #   name = "google-drive";
+      #   greedy = true;
+      # }
       {
         name = "jump-desktop-connect";
         greedy = true;
       }
-      {
-        name = "keepassxc";
-        greedy = true;
-      }
+      # {
+      #   name = "keepassxc";
+      #   greedy = true;
+      # }
       {
         name = "orbstack";
         greedy = true;
@@ -63,10 +63,10 @@
       #   name = "utm";
       #   greedy = true;
       # }
-      {
-        name = "vivaldi";
-        greedy = true;
-      }
+      # {
+      #   name = "vivaldi";
+      #   greedy = true;
+      # }
     ];
   };
 }

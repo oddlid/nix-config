@@ -160,17 +160,10 @@
     };
 
     # Extra entries to add to PATH
-    sessionPath = [
-      "/opt/homebrew/bin"
-      "$HOME/.orbstack/bin"
-      "$HOME/.cargo/bin"
-      # "$HOME/.rd/bin"
-    ];
+    # sessionPath = [
+    # ];
 
     sessionVariables = {
-      GOPATH = "$HOME/gopath";
-      GOWS = "$HOME/ResilioSync/code/go/github.com/oddlid";
-      RUSTWS = "$HOME/ResilioSync/code/rust";
       # EDITOR = "nvim"; # will be set by the neovim config below
       VISUAL = "$EDITOR";
       LESS = "FRi"; # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
@@ -178,7 +171,6 @@
       MANPAGER = "nvim +Man!";
       REPORTTIME = "5";
       TIMEFMT = "%U user, %S system, %P cpu, %*Es total";
-      DOTNET_ROOT = "/usr/local/share/dotnet";
     };
 
     # TODO: see if I need to specify these, as it seems those enabled via programs.* don't need an entry here
@@ -268,20 +260,21 @@
       ];
       # Taken from the Solarized example here: https://github.com/junegunn/fzf/wiki/Color-schemes
       # In tmux, terminal must be tmux-256color, and the term overrides must also be set as below for it to work properly
-      colors = {
-        "bg+" = "#073642";
-        bg = "#002b36";
-        spinner = "#719e07";
-        hl = "#586e75";
-        fg = "#839496";
-        header = "#586e75";
-        info = "#cb4b16";
-        pointer = "#719e07";
-        marker = "#719e07";
-        "fg+" = "#839496";
-        prompt = "#719e07";
-        "hl+" = "#719e07";
-      };
+      # Trying to disable this, since I won't be using a proper terminal on this machine much
+      # colors = {
+      #   "bg+" = "#073642";
+      #   bg = "#002b36";
+      #   spinner = "#719e07";
+      #   hl = "#586e75";
+      #   fg = "#839496";
+      #   header = "#586e75";
+      #   info = "#cb4b16";
+      #   pointer = "#719e07";
+      #   marker = "#719e07";
+      #   "fg+" = "#839496";
+      #   prompt = "#719e07";
+      #   "hl+" = "#719e07";
+      # };
       defaultCommand = "fd --type f --strip-cwd-prefix --hidden -E .git -E .direnv";
       # defaultOptions = [
       #   "--preview 'if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi'"
@@ -296,7 +289,7 @@
     };
 
     gh = {
-      enable = true;
+      enable = false;
       settings = {
         aliases = { };
         editor = "nvim";
@@ -356,7 +349,7 @@
     };
 
     lazygit = {
-      enable = true;
+      enable = false;
       settings = { };
     };
 
@@ -535,31 +528,31 @@
       localVariables = { };
       oh-my-zsh = {
         enable = true;
-        extraConfig = ''
-          zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 github
-        '';
-        plugins = [
-          "alias-finder"
-          "aliases"
-          "dircycle"
-          "docker"
-          "encode64"
-          "extract"
-          "fzf"
-          "git"
-          "golang"
-          "helm"
-          "isodate"
-          "macos"
-          "nmap"
-          "rsync"
-          "safe-paste"
-          "systemadmin"
-          "tmux"
-          "transfer"
-          "universalarchive"
-          "urltools"
-        ];
+        # extraConfig = ''
+        #   zstyle :omz:plugins:ssh-agent identities id_rsa id_ed25519 github
+        # '';
+        # plugins = [
+        #   "alias-finder"
+        #   "aliases"
+        #   "dircycle"
+        #   "docker"
+        #   "encode64"
+        #   "extract"
+        #   "fzf"
+        #   "git"
+        #   "golang"
+        #   "helm"
+        #   "isodate"
+        #   "macos"
+        #   "nmap"
+        #   "rsync"
+        #   "safe-paste"
+        #   "systemadmin"
+        #   "tmux"
+        #   "transfer"
+        #   "universalarchive"
+        #   "urltools"
+        # ];
         theme = "crcandy";
       };
       syntaxHighlighting = {
