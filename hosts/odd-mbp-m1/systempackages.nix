@@ -23,6 +23,7 @@
     nixfmt
     nodejs_24 # Common for a lot of nvim stuff, so might just always have it
     rclone
+    statix
     tree-sitter
     vim
     zsh

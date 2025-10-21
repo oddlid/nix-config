@@ -228,6 +228,24 @@
       ];
     };
 
+    # Only one diff highlighter can be enabled at a time
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        navigate = true;
+        side-by-side = true;
+      };
+    };
+
+    diff-highlight = {
+      enable = false;
+    };
+
+    diff-so-fancy = {
+      enable = false;
+    };
+
     # Not really needed anymore, after enabling eza
     dircolors = {
       enable = false;
@@ -305,36 +323,24 @@
 
     git = {
       enable = true;
-      aliases = {
-        st = "status";
-        ls-untracked = "!git ls-files --others --exclude-standard";
-        pushall = "!git remote | xargs -L1 git push --all";
-        pushreview = "push origin HEAD:refs/for/master";
-        pushdraft = "push origin HEAD:refs/drafts/master";
-        count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #";
-      };
-      # Only one diff highlighter can be enabled at a time
-      delta = {
-        enable = true;
-        options = {
-          navigate = true;
-          side-by-side = true;
+      settings = {
+        alias = {
+          st = "status";
+          ls-untracked = "!git ls-files --others --exclude-standard";
+          pushall = "!git remote | xargs -L1 git push --all";
+          pushreview = "push origin HEAD:refs/for/master";
+          pushdraft = "push origin HEAD:refs/drafts/master";
+          count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #";
         };
-      };
-      diff-highlight = {
-        enable = false;
-      };
-      diff-so-fancy = {
-        enable = false;
-      };
-      extraConfig = {
         pull = {
           rebase = true;
         };
+        user = {
+          name = "git@oddware.net";
+          email = "Odd E. Ebbesen";
+        };
       };
       lfs.enable = true;
-      userEmail = "git@oddware.net";
-      userName = "Odd E. Ebbesen";
     };
 
     gpg = {
