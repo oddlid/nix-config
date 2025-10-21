@@ -213,10 +213,7 @@
         theme = "Solarized (dark)";
       };
       extraPackages = with pkgs.bat-extras; [
-        batdiff
-        batman
-        batgrep
-        batwatch
+        core
       ];
     };
 
