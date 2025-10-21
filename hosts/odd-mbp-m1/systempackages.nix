@@ -8,7 +8,7 @@
   # Think I want to just have the bare minimum shell tools here, and solve
   # the rest with home-manager.
   environment.systemPackages = with pkgs; [
-    asn
+    # asn
     btop
     coreutils-full
     devenv
