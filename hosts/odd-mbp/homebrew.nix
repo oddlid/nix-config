@@ -18,6 +18,7 @@
       "plakar" # backup system
       "syncthing"
     ];
+    caskArgs.no_quarantine = true;
     casks = [
       # {
       #   name = "font-hack-nerd-font";
