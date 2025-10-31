@@ -17,6 +17,7 @@
     brews = [
       "cocoapods" # needed to build swift apps
       "plakar" # backup system
+      "sendme"
       "syncthing"
       # "libolm" # needed for developing with mautrix-go, remove when done
     ];

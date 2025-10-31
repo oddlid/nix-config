@@ -16,6 +16,7 @@
     };
     brews = [
       "plakar" # backup system
+      "sendme"
       "syncthing"
     ];
     caskArgs.no_quarantine = true;
