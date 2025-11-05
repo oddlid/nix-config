@@ -497,6 +497,18 @@
       enable = false;
     };
 
+    yazi = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      plugins = with pkgs.yaziPlugins; {
+        inherit chmod;
+        inherit git;
+        inherit lazygit;
+        inherit rsync;
+      };
+    };
+
     zsh = {
       enable = true;
       enableCompletion = true;

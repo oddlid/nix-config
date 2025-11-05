@@ -16,6 +16,7 @@
     };
     brews = [
       "cocoapods" # needed to build swift apps
+      "dumbpipe"
       "plakar" # backup system
       "sendme"
       "syncthing"
