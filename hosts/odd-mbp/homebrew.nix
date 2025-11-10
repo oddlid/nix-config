@@ -15,6 +15,7 @@
       upgrade = true;
     };
     brews = [
+      "navidrome"
       "plakar" # backup system
       "sendme"
       "syncthing"
