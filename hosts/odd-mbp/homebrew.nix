@@ -20,6 +20,9 @@
       "sendme"
       "syncthing"
     ];
+    taps = [
+      "henrygd/beszel"
+    ];
     caskArgs.no_quarantine = true;
     casks = [
       {
