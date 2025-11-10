@@ -37,10 +37,10 @@
       #   name = "resilio-sync";
       #   greedy = true;
       # }
-      # {
-      #   name = "tailscale-app";
-      #   greedy = true;
-      # }
+      {
+        name = "tailscale-app";
+        greedy = true;
+      }
     ];
   };
 }
