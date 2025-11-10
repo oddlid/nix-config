@@ -22,51 +22,23 @@
     caskArgs.no_quarantine = true;
     casks = [
       # {
-      #   name = "font-hack-nerd-font";
+      #   name = "ghostty";
       #   greedy = true;
       # }
       # {
-      #   name = "font-jetbrains-mono";
+      #   name = "jump-desktop-connect";
       #   greedy = true;
       # }
       # {
-      #   name = "font-inconsolata";
-      #   greedy = true;
-      # }
-      {
-        name = "ghostty";
-        greedy = true;
-      }
-      # {
-      #   name = "google-drive";
-      #   greedy = true;
-      # }
-      {
-        name = "jump-desktop-connect";
-        greedy = true;
-      }
-      # {
-      #   name = "keepassxc";
-      #   greedy = true;
-      # }
-      {
-        name = "orbstack";
-        greedy = true;
-      }
-      {
-        name = "resilio-sync";
-        greedy = true;
-      }
-      {
-        name = "tailscale-app";
-        greedy = true;
-      }
-      # {
-      #   name = "utm";
+      #   name = "orbstack";
       #   greedy = true;
       # }
       # {
-      #   name = "vivaldi";
+      #   name = "resilio-sync";
+      #   greedy = true;
+      # }
+      # {
+      #   name = "tailscale-app";
       #   greedy = true;
       # }
     ];
