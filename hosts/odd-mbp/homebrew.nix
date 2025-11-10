@@ -15,6 +15,7 @@
       upgrade = true;
     };
     brews = [
+      "beszel-agent"
       "navidrome"
       "plakar" # backup system
       "sendme"
