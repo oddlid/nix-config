@@ -21,22 +21,22 @@
     ];
     caskArgs.no_quarantine = true;
     casks = [
-      # {
-      #   name = "ghostty";
-      #   greedy = true;
-      # }
-      # {
-      #   name = "jump-desktop-connect";
-      #   greedy = true;
-      # }
-      # {
-      #   name = "orbstack";
-      #   greedy = true;
-      # }
-      # {
-      #   name = "resilio-sync";
-      #   greedy = true;
-      # }
+      {
+        name = "ghostty";
+        greedy = true;
+      }
+      {
+        name = "jump-desktop-connect";
+        greedy = true;
+      }
+      {
+        name = "orbstack";
+        greedy = true;
+      }
+      {
+        name = "resilio-sync";
+        greedy = true;
+      }
       {
         name = "tailscale-app";
         greedy = true;
