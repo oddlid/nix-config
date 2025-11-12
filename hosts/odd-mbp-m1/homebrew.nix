@@ -17,6 +17,7 @@
     brews = [
       "cocoapods" # needed to build swift apps
       "dumbpipe"
+      "filen-cli"
       "plakar" # backup system
       "sendme"
       "syncthing"
@@ -61,6 +62,10 @@
       }
       {
         name = "element";
+        greedy = true;
+      }
+      {
+        name = "filen";
         greedy = true;
       }
       {
