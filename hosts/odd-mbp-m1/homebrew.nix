@@ -16,6 +16,7 @@
     };
     brews = [
       "cocoapods" # needed to build swift apps
+      "dnscontrol"
       "dumbpipe"
       "filen-cli"
       "plakar" # backup system
