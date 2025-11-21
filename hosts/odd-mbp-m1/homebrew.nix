@@ -125,10 +125,10 @@
         name = "resilio-sync";
         greedy = true;
       }
-      {
-        name = "rustdesk";
-        greedy = true;
-      }
+      #{
+      #  name = "rustdesk";
+      #  greedy = true;
+      #}
       {
         name = "scroll-reverser";
         greedy = true;
