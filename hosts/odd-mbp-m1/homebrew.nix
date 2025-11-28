@@ -173,6 +173,10 @@
       #   name = "wezterm";
       #   greedy = true;
       # }
+      {
+        name = "zed";
+        greedy = true;
+      }
     ];
   };
 }
