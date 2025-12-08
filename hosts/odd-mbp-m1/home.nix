@@ -337,6 +337,11 @@
           email = "Odd E. Ebbesen";
         };
       };
+      signing = {
+        format = "ssh";
+        key = "~/.ssh/id_ed25519.pub";
+        signByDefault = true;
+      };
       lfs.enable = true;
     };
 
