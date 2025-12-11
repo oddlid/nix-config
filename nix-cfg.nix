@@ -51,6 +51,7 @@
       ];
     };
     settings = {
+      auto-optimise-store = true;
       experimental-features = "nix-command flakes"; # Necessary for using flakes on this system.
       trusted-users = [
         "@admin"
