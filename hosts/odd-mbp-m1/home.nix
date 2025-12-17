@@ -172,7 +172,7 @@
       GOWS = "$HOME/ResilioSync/code/go/github.com/oddlid";
       RUSTWS = "$HOME/ResilioSync/code/rust";
       # EDITOR = "nvim"; # will be set by the neovim config below
-      VISUAL = "$EDITOR";
+      VISUAL = "nvim";
       LESS = "FRi"; # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
       PAGER = "less";
       MANPAGER = "nvim +Man!";
