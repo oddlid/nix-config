@@ -203,6 +203,7 @@
 
     shellAliases = {
       _tm = "tmux -u2 attach-session || tmux -u2";
+      _ts = "date -Iseconds | cut -d + -f1 | sed 's/T/_/;s/://g'";
     };
 
     username = "oddee";
