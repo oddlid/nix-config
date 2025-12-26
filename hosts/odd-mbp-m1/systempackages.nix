@@ -22,6 +22,7 @@
     mosh
     nixfmt
     nodejs_24 # Common for a lot of nvim stuff, so might just always have it
+    rage # file encryption
     rclone
     statix
     tree-sitter
