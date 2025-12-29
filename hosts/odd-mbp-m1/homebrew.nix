@@ -22,6 +22,7 @@
       "plakar" # backup system
       "sendme"
       "syncthing"
+      "witr" # "why is this running"
       # "libolm" # needed for developing with mautrix-go, remove when done
     ];
     casks = [
