@@ -115,6 +115,10 @@
       #   greedy = true;
       # }
       {
+        name = "kopiaui";
+        greedy = true;
+      }
+      {
         name = "orbstack";
         greedy = true;
       }
