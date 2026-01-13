@@ -122,10 +122,10 @@
         name = "orbstack";
         greedy = true;
       }
-      # {
-      #   name = "orion";
-      #   greedy = true;
-      # }
+      {
+        name = "orion";
+        greedy = true;
+      }
       {
         name = "resilio-sync";
         greedy = true;
