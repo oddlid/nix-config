@@ -110,10 +110,10 @@
         name = "keepassxc";
         greedy = true;
       }
-      # {
-      #   name = "nheko";
-      #   greedy = true;
-      # }
+      {
+        name = "nheko";
+        greedy = true;
+      }
       {
         name = "kopiaui";
         greedy = true;
