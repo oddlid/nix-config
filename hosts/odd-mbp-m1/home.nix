@@ -187,7 +187,6 @@
       cargo
       fzf
       fzf-git-sh
-      fzf-zsh
       ripgrep
       tmuxPlugins.tmux-fzf
       zsh-forgit
@@ -243,8 +242,7 @@
         diffToolMode = true;
       };
       options = {
-        color = "dark";
-        sort-path = true;
+        sort-paths = true;
         tab-width = 2;
       };
     };
