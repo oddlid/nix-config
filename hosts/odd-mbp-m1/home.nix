@@ -28,12 +28,12 @@
           realName = "Odd E. Ebbesen";
         };
         oddware_git = {
-          primary = false;
+          primary = true;
           address = "git@oddware.net";
           realName = "Odd E. Ebbesen";
         };
         gmail_oddebb = {
-          primary = true;
+          primary = false;
           address = "oddebb@gmail.com";
           flavor = "gmail.com";
           realName = "Odd E. Ebbesen";
@@ -228,11 +228,24 @@
 
     # Only one diff highlighter can be enabled at a time
     delta = {
-      enable = true;
+      enable = false;
       enableGitIntegration = true;
       options = {
         navigate = true;
         side-by-side = true;
+      };
+    };
+
+    difftastic = {
+      enable = true;
+      git = {
+        enable = true;
+        diffToolMode = true;
+      };
+      options = {
+        color = "dark";
+        sort-path = true;
+        tab-width = 2;
       };
     };
 
@@ -330,6 +343,9 @@
           pushdraft = "push origin HEAD:refs/drafts/master";
           count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #";
         };
+        merge = {
+          conflictStyle = "diff3";
+        };
         pull = {
           rebase = true;
         };
@@ -392,6 +408,10 @@
     # mbsync = {
     #   enable = false;
     # };
+
+    mergiraf = {
+      enable = true;
+    };
 
     # msmtp = {
     #   enable = false;
