@@ -12,6 +12,7 @@
     btop
     coreutils-full
     devenv
+    dix
     duf
     dust
     ghostscript
@@ -20,7 +21,9 @@
     imagemagick
     mc
     mosh
+    nh
     nixfmt
+    nom
     nodejs_24 # Common for a lot of nvim stuff, so might just always have it
     rage # file encryption
     rclone
