@@ -150,10 +150,10 @@
         name = "tidal";
         greedy = true;
       }
-      {
-        name = "tuta-mail";
-        greedy = true;
-      }
+      #{
+      #  name = "tuta-mail";
+      #  greedy = true;
+      #}
       {
         name = "utm";
         greedy = true;
