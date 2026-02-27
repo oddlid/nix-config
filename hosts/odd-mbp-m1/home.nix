@@ -531,6 +531,7 @@
         inherit lazygit;
         inherit rsync;
       };
+      shellWrapperName = "y";
     };
 
     zsh = {
