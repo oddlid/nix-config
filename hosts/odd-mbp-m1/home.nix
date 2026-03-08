@@ -364,6 +364,58 @@
       enable = true;
     };
 
+    helix = {
+      enable = true;
+      settings = {
+        theme = "solarized_dark";
+        editor = {
+          line-number = "relative";
+          atomic-save = false;
+          trim-final-newlines = true;
+          trim-trailing-whitespace = true;
+          clipboard-provider = "termcode";
+          cursor-shape = {
+            normal = "block";
+            insert = "bar";
+            select = "underline";
+          };
+          indent-guides = {
+            render = true;
+          };
+        };
+      };
+      languages = {
+        language = [
+          {
+            name = "rust";
+            file-types = [ "rs" ];
+            auto-format = true;
+            formatter = {
+              command = "rustfmt";
+            };
+            roots = [
+              "Cargo.toml"
+              "Cargo.lock"
+            ];
+            language-servers = [ "rust-analyzer" ];
+          }
+        ];
+        language-server = {
+          rust-analyzer = {
+            command = "rust-analyzer";
+            config = {
+              check = {
+                command = "clippy";
+              };
+              cargo = {
+                features = "all";
+              };
+            };
+          };
+        };
+      };
+    };
+
     htop = {
       enable = true;
       settings = { };
