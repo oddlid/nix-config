@@ -399,6 +399,22 @@
             ];
             language-servers = [ "rust-analyzer" ];
           }
+          {
+            name = "nix";
+            formatter = {
+              command = "alejandra";
+            };
+          }
+          {
+            name = "python";
+            auto-format = true;
+            language-servers = [ "ruff" ];
+          }
+          {
+            name = "toml";
+            roots = ["."];
+            language-servers = [ "taplo" ];
+          }
         ];
         language-server = {
           rust-analyzer = {
@@ -411,6 +427,10 @@
                 features = "all";
               };
             };
+          };
+          ruff = {
+            command = "ruff";
+            args = ["server"];
           };
         };
       };
