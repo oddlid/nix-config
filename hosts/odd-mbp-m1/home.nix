@@ -171,7 +171,7 @@
       GOPATH = "$HOME/gopath";
       GOWS = "$HOME/ResilioSync/code/go/github.com/oddlid";
       RUSTWS = "$HOME/ResilioSync/code/rust";
-      # EDITOR = "nvim"; # will be set by the neovim config below
+      EDITOR = "nvim"; # will be set by the neovim config below
       VISUAL = "nvim";
       LESS = "FRi"; # --quit-if-one-screen --RAW-CONTROL-CHARS --ignore-case
       PAGER = "less";
@@ -187,6 +187,7 @@
       cargo
       fzf
       fzf-git-sh
+      neovim-unwrapped
       ripgrep
       tmuxPlugins.tmux-fzf
       zsh-forgit
@@ -481,6 +482,7 @@
 
     mergiraf = {
       enable = true;
+      enableGitIntegration = true;
     };
 
     # msmtp = {
@@ -498,8 +500,15 @@
     };
 
     neovim = {
-      enable = true;
+      enable = false;
       defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      withNodeJs = true;
+      withPerl = true;
+      withPython3 = true;
+      withRuby = true;
     };
 
     nix-your-shell = {

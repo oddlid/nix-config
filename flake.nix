@@ -87,6 +87,7 @@
             home-manager.darwinModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "bak";
                 useGlobalPkgs = false;
                 useUserPackages = true;
                 users.oddee = import ./hosts/odd-mbp-m1/home.nix;
@@ -97,37 +98,37 @@
           specialArgs = { inherit inputs; };
         };
 
-        "odd-mbp" = darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          modules = [
-            ./nix-cfg.nix
-            ./hosts/odd-mbp/systempackages.nix
-            ./hosts/odd-mbp/homebrew.nix
-            ./hosts/odd-mbp/security.nix
-            ./hosts/odd-mbp/nixpkgs.nix
-            (import ./hosts/odd-mbp/system.nix { inherit self; })
-            configuration
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                enable = true;
-                enableRosetta = false;
-                user = "oddee";
-                autoMigrate = true;
-              };
-            }
-            home-manager.darwinModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = false;
-                useUserPackages = true;
-                users.oddee = import ./hosts/odd-mbp/home.nix;
-              };
-              users.users.oddee.home = "/Users/oddee";
-            }
-          ];
-          specialArgs = { inherit inputs; };
-        };
+        # "odd-mbp" = darwin.lib.darwinSystem {
+        #   system = "x86_64-darwin";
+        #   modules = [
+        #     ./nix-cfg.nix
+        #     ./hosts/odd-mbp/systempackages.nix
+        #     ./hosts/odd-mbp/homebrew.nix
+        #     ./hosts/odd-mbp/security.nix
+        #     ./hosts/odd-mbp/nixpkgs.nix
+        #     (import ./hosts/odd-mbp/system.nix { inherit self; })
+        #     configuration
+        #     nix-homebrew.darwinModules.nix-homebrew
+        #     {
+        #       nix-homebrew = {
+        #         enable = true;
+        #         enableRosetta = false;
+        #         user = "oddee";
+        #         autoMigrate = true;
+        #       };
+        #     }
+        #     home-manager.darwinModules.home-manager
+        #     {
+        #       home-manager = {
+        #         useGlobalPkgs = false;
+        #         useUserPackages = true;
+        #         users.oddee = import ./hosts/odd-mbp/home.nix;
+        #       };
+        #       users.users.oddee.home = "/Users/oddee";
+        #     }
+        #   ];
+        #   specialArgs = { inherit inputs; };
+        # };
       };
 
       # Expose the package set, including overlays, for convenience.
