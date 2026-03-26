@@ -8,30 +8,47 @@
   # For all possible options, see: https://nix-community.github.io/home-manager/options.xhtml
 
   accounts = {
-    # calendar = {
-    #   accounts = {
-    #     gmail_oddebb = { };
-    #   };
-    # };
+    calendar = {
+      accounts = {
+        oddware_odd = { };
+      };
+    };
 
-    # contact = {
-    #   accounts = {
-    #     gmail_oddebb = { };
-    #   };
-    # };
+    contact = {
+      accounts = {
+        oddware_odd = { };
+      };
+    };
 
     email = {
       accounts = {
         oddware_odd = {
-          primary = false;
+          primary = true;
           address = "odd@oddware.net";
           realName = "Odd E. Ebbesen";
+          msmtp = {
+            enable = false;
+            # extraConfig = {
+            #   user = "odd";
+            #   host = "mail.oddware.net";
+            #   port = 465;
+            #   tls = "on";
+            #   auth = "on";
+            # };
+          };
+          neomutt = {
+            enable = false;
+            extraConfig = ''
+            '';
+            extraMailboxes = [];
+
+          };
         };
-        oddware_git = {
-          primary = true;
-          address = "git@oddware.net";
-          realName = "Odd E. Ebbesen";
-        };
+        # oddware_git = {
+        #   primary = false;
+        #   address = "git@oddware.net";
+        #   realName = "Odd E. Ebbesen";
+        # };
         gmail_oddebb = {
           primary = false;
           address = "oddebb@gmail.com";
@@ -485,18 +502,21 @@
       enableGitIntegration = true;
     };
 
-    # msmtp = {
-    #   enable = false;
-    # };
+    msmtp = {
+      enable = true;
+    };
 
     neomutt = {
-      enable = false;
+      enable = true;
+      extraConfig = "";
+      settings = { };
       sidebar = {
         enable = true;
+        shortPath = true;
       };
       sort = "reverse-last-date-received";
       unmailboxes = true;
-      vimKeys = false;
+      vimKeys = true;
     };
 
     neovim = {
