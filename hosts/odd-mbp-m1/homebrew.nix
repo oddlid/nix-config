@@ -110,10 +110,10 @@
         name = "keepassxc";
         greedy = true;
       }
-      {
-        name = "nheko";
-        greedy = true;
-      }
+      # {
+      #   name = "nheko";
+      #   greedy = true;
+      # }
       {
         name = "kopiaui";
         greedy = true;
@@ -126,10 +126,10 @@
         name = "orion";
         greedy = true;
       }
-      {
-        name = "raspberry-pi-imager";
-        greedy = true;
-      }
+      # {
+      #   name = "raspberry-pi-imager";
+      #   greedy = true;
+      # }
       {
         name = "resilio-sync";
         greedy = true;
