@@ -95,6 +95,10 @@
         greedy = true;
       }
       {
+        name = "gram";
+        greedy = true;
+      }
+      {
         name = "ilok-license-manager";
         greedy = true;
       }
