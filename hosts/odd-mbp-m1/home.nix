@@ -38,9 +38,8 @@
           };
           neomutt = {
             enable = false;
-            extraConfig = ''
-            '';
-            extraMailboxes = [];
+            extraConfig = "";
+            extraMailboxes = [ ];
 
           };
         };
@@ -238,9 +237,9 @@
       config = {
         theme = "Solarized (dark)";
       };
-      extraPackages = with pkgs.bat-extras; [
-        core
-      ];
+      # extraPackages = with pkgs.bat-extras; [
+      #   core
+      # ];
     };
 
     # Only one diff highlighter can be enabled at a time
@@ -430,7 +429,7 @@
           }
           {
             name = "toml";
-            roots = ["."];
+            roots = [ "." ];
             language-servers = [ "taplo" ];
           }
         ];
@@ -448,7 +447,7 @@
           };
           ruff = {
             command = "ruff";
-            args = ["server"];
+            args = [ "server" ];
           };
         };
       };
