@@ -138,10 +138,10 @@
       #   name = "raspberry-pi-imager";
       #   greedy = true;
       # }
-      {
-        name = "resilio-sync";
-        greedy = true;
-      }
+      # {
+      #   name = "resilio-sync";
+      #   greedy = true;
+      # }
       #{
       #  name = "rustdesk";
       #  greedy = true;
