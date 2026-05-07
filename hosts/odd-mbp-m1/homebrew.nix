@@ -126,10 +126,10 @@
         name = "orbstack";
         greedy = true;
       }
-      {
-        name = "orchard";
-        greedy = true;
-      }
+      # {
+      #   name = "orchard";
+      #   greedy = true;
+      # }
       {
         name = "orion";
         greedy = true;
@@ -170,10 +170,10 @@
         name = "utm";
         greedy = true;
       }
-      {
-        name = "visual-studio-code";
-        greedy = true;
-      }
+      # {
+      #   name = "visual-studio-code";
+      #   greedy = true;
+      # }
       {
         name = "vivaldi";
         greedy = true;
@@ -190,10 +190,10 @@
       #   name = "wezterm";
       #   greedy = true;
       # }
-      {
-        name = "zed";
-        greedy = true;
-      }
+      # {
+      #   name = "zed";
+      #   greedy = true;
+      # }
     ];
   };
 }
