@@ -50,10 +50,10 @@
         name = "calibre";
         greedy = true;
       }
-      {
-        name = "chirp";
-        greedy = true;
-      }
+      # {
+      #   name = "chirp";
+      #   greedy = true;
+      # }
       # {
       #   name = "deskpad";
       #   greedy = true;
