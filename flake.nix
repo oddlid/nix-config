@@ -14,7 +14,7 @@
 
     nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
-      inputs.brew-src.url = "github:Homebrew/brew/master";
+      # inputs.brew-src.url = "github:Homebrew/brew/master";
     };
     # Optional: Declarative tap management
     homebrew-core = {
