@@ -21,7 +21,7 @@
     package = pkgs.lixPackageSets.latest.lix;
     #optimize.automatic = true; # suggested, but doesn't exist...
     linux-builder = {
-      enable = false;
+      enable = true;
       ephemeral = true;
       # Not quite sure how this option works in this context, but when trying to build conduwuit for aarch64-linux in the builder,
       # I found out, after hours of googling, that I need to pass "--max-jobs 0" to nix build, to be sure _only_ the VM does the building.
