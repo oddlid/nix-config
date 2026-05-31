@@ -99,6 +99,10 @@
         greedy = true;
       }
       {
+        name = "halloy";
+        greedy = true;
+      }
+      {
         name = "ilok-license-manager";
         greedy = true;
       }
