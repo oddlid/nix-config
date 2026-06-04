@@ -23,7 +23,7 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-homebrew = {
@@ -129,6 +129,16 @@
               ./hosts/rpi4-base/system.nix
               ./hosts/rpi4-base/systemd.nix
               (import ./hosts/rpi4-base/users.nix { primaryUser = username; })
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  backupFileExtension = "bak";
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = { inherit inputs; };
+                  users.${username} = import ./hosts/rpi4-base/hm.nix;
+                };
+              }
             ];
           };
 
@@ -190,7 +200,7 @@
             {
               home-manager = {
                 backupFileExtension = "bak";
-                useGlobalPkgs = false;
+                useGlobalPkgs = true;
                 useUserPackages = true;
                 users.oddee = import ./hosts/odd-mbp-m1/home.nix;
               };

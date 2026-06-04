@@ -93,7 +93,7 @@ in
         config.boot.kernelPackages.kernel.version
       ];
     # We are stateless, so just default to latest.
-    # stateVersion = config.system.nixos.release;
-    stateVersion = "26.05";
+    stateVersion = config.system.nixos.release;
+    # stateVersion = 6;
   };
 }
