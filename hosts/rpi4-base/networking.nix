@@ -7,6 +7,11 @@
     firewall = {
       allowedUDPPorts = [ 5353 ]; # mDNS
     };
+
+    resolvconf = {
+      enable = false;
+    };
+
     wireless = {
       enable = false;
       # Use iwd instead of wpa_supplicant. It has a user friendly CLI

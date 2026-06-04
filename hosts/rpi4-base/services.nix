@@ -14,6 +14,10 @@
       };
     };
 
+    resolved = {
+      enable = false;
+    };
+
     tailscale = {
       enable = true;
       extraDaemonFlags = [
@@ -77,6 +81,11 @@
           # TODO: decide if I want local records here, as well as in AGH
         };
         forward-zone = [
+          {
+            # Use AGH as upstream for split horizon
+            name = "oddware.net";
+            forward-addr = "10.66.6.6";
+          }
           {
             name = "ts.net";
             forward-addr = "100.100.100.100";

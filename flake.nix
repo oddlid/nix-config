@@ -116,7 +116,7 @@
           username = "oddee";
         in
         {
-          rpi4 = nixos-raspberrypi.lib.nixosInstaller {
+          rpi4-base = nixos-raspberrypi.lib.nixosInstaller {
             system = "aarch64-linux";
             specialArgs = inputs;
             modules = [
@@ -131,11 +131,38 @@
               (import ./hosts/rpi4-base/users.nix { primaryUser = username; })
             ];
           };
+
+          # rpi4-1 = nixos-raspberrypi.lib.nixosSystemFull {
+          #   system = "aarch64-linux";
+          #   specialArgs = inputs;
+          #   modules = [
+          #     ./hosts/rpi4-base/base.nix
+          #     ./hosts/rpi4-base/environment.nix
+          #     (import ./hosts/rpi4-base/networking.nix { hostname = "rpi4-base"; })
+          #     ./hosts/rpi4-base/programs.nix
+          #     ./hosts/rpi4-base/security.nix
+          #     (import ./hosts/rpi4-base/services.nix { primaryUser = username; })
+          #     ./hosts/rpi4-base/system.nix
+          #     ./hosts/rpi4-base/systemd.nix
+          #     (import ./hosts/rpi4-base/users.nix { primaryUser = username; })
+          #     home-manager.nixosModules.home-manager
+          #     {
+          #       home-manager = {
+          #         backupFileExtension = "bak";
+          #         useGlobalPkgs = true;
+          #         useUserPackages = true;
+          #         extraSpecialArgs = { inherit inputs; };
+          #         users.${username} = import ./hosts/rpi4-base/hm.nix;
+          #       };
+          #     }
+          #   ];
+          # };
+
         };
 
       # Build with: nix build --max-jobs 0 .#images.rpi4
       # --max-jobs 0 makes it happen on the linux-builder instead of locally.
-      images.rpi4 = self.nixosConfigurations.rpi4.config.system.build.sdImage;
+      images.rpi4-base = self.nixosConfigurations.rpi4-base.config.system.build.sdImage;
 
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#$hostname

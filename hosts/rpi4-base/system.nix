@@ -40,6 +40,10 @@ in
       "cgroup_enable=memory"
       "cgroup_memory=1"
     ];
+    kernel.sysctl = {
+      "net.core.rmem_max" = 4194304;
+      "net.core.wmem_max" = 4194304;
+    };
     tmp.useTmpfs = true;
   };
 
@@ -53,7 +57,6 @@ in
       experimental-features = [
         "nix-command"
         "flakes"
-        "flake-self-attrs"
       ];
     };
     gc = {

@@ -20,6 +20,7 @@ in
       #   initialHashedPassword = "";
       #   openssh.authorizedKeys.keys = keys;
       # };
+
       root = {
         # Allow the user to log in as root without a password.
         initialHashedPassword = "";

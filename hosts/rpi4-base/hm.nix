@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   swe = "sv_SE.UTF-8";
 in
@@ -297,5 +302,5 @@ in
     };
   };
 
-  services = { };
+  # services = { };
 }
