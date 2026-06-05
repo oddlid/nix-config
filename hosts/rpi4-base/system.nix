@@ -47,6 +47,12 @@ in
     tmp.useTmpfs = true;
   };
 
+  hardware = {
+    bluetooth = {
+      enable = lib.mkForce false;
+    };
+  };
+
   nix = {
     settings = {
       auto-optimise-store = true;

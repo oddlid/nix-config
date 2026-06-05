@@ -23,7 +23,7 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-homebrew = {
@@ -42,6 +42,7 @@
 
     nixos-raspberrypi = {
       url = "github:nvmd/nixos-raspberrypi/main";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-anywhere = {
@@ -119,6 +120,7 @@
           rpi4-base = nixos-raspberrypi.lib.nixosInstaller {
             system = "aarch64-linux";
             specialArgs = inputs;
+            # inherit (inputs) nixpkgs;
             modules = [
               ./hosts/rpi4-base/base.nix
               ./hosts/rpi4-base/environment.nix
@@ -135,38 +137,12 @@
                   backupFileExtension = "bak";
                   useGlobalPkgs = true;
                   useUserPackages = true;
-                  extraSpecialArgs = { inherit inputs; };
-                  users.${username} = import ./hosts/rpi4-base/hm.nix;
+                  # extraSpecialArgs = { inherit inputs; };
+                  users.${username}.imports = [ ./hosts/rpi4-base/hm.nix ];
                 };
               }
             ];
           };
-
-          # rpi4-1 = nixos-raspberrypi.lib.nixosSystemFull {
-          #   system = "aarch64-linux";
-          #   specialArgs = inputs;
-          #   modules = [
-          #     ./hosts/rpi4-base/base.nix
-          #     ./hosts/rpi4-base/environment.nix
-          #     (import ./hosts/rpi4-base/networking.nix { hostname = "rpi4-base"; })
-          #     ./hosts/rpi4-base/programs.nix
-          #     ./hosts/rpi4-base/security.nix
-          #     (import ./hosts/rpi4-base/services.nix { primaryUser = username; })
-          #     ./hosts/rpi4-base/system.nix
-          #     ./hosts/rpi4-base/systemd.nix
-          #     (import ./hosts/rpi4-base/users.nix { primaryUser = username; })
-          #     home-manager.nixosModules.home-manager
-          #     {
-          #       home-manager = {
-          #         backupFileExtension = "bak";
-          #         useGlobalPkgs = true;
-          #         useUserPackages = true;
-          #         extraSpecialArgs = { inherit inputs; };
-          #         users.${username} = import ./hosts/rpi4-base/hm.nix;
-          #       };
-          #     }
-          #   ];
-          # };
 
         };
 

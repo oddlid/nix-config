@@ -170,16 +170,16 @@ in
     # Only setting the options here that are not available for global programs.tmux
     tmux = {
       enable = true;
-      # clock24 = true;
-      # escapeTime = 40;
+      clock24 = true;
+      escapeTime = 40;
       focusEvents = true;
-      # historyLimit = 5000;
+      historyLimit = 5000;
       mouse = true;
-      # newSession = true;
+      newSession = true;
       prefix = "C-x";
       sensibleOnTop = false; # see: https://github.com/nix-community/home-manager/issues/5952
       # shell = "${pkgs.zsh}/bin/zsh"; # the shell option in extraConfig seems to work better
-      # terminal = "tmux-256color"; # This makes the fzf colorscheme work properly
+      terminal = "tmux-256color"; # This makes the fzf colorscheme work properly
 
       # TODO: find out how this works when programs.tmux.plugins is set as well
       plugins = with pkgs.tmuxPlugins; [
@@ -199,33 +199,33 @@ in
         yank
       ];
 
-      # extraConfig = ''
-      #   # See: https://github.com/tmux/tmux/wiki/Clipboard#quick-summary
-      #   set -s set-clipboard on
-      #   # Ms modifies OSC 52 clipboard handling to work with mosh, see
-      #   # https://gist.github.com/yudai/95b20e3da66df1b066531997f982b57b
-      #   set -ag terminal-overrides ",xterm*:Ms=\\E]52;c%p1%.0s;%p2%s\\7"
-      #   set -ag terminal-overrides ",tmux*:Ms=\\E]52;c%p1%.0s;%p2%s\\7"
-      #
-      #   bind-key x send-prefix
-      #   bind-key C-x last-window
-      #   bind 'v' copy-mode
-      #   set-window-option -g mode-keys vi
-      #   set -g default-command "$SHELL"
-      #   set -g default-shell "$SHELL"
-      #   set -ag terminal-overrides ',xterm-256color:Tc'
-      #   set -as terminal-overrides ',xterm*:sitm=\E[3m'
-      #   # allow for navigating between words with option
-      #   set-window-option -g xterm-keys on
-      #   # Allow the arrow key to be used immediately after changing windows
-      #   set -g repeat-time 0
-      #   # Set window notifications
-      #   set -g monitor-activity on
-      #   set -g visual-activity on
-      #   # Status update interval
-      #   set -g status-interval 1
-      #   set -g renumber-windows on    # renumber windows when a window is closed
-      # '';
+      extraConfig = ''
+        # See: https://github.com/tmux/tmux/wiki/Clipboard#quick-summary
+        set -s set-clipboard on
+        # Ms modifies OSC 52 clipboard handling to work with mosh, see
+        # https://gist.github.com/yudai/95b20e3da66df1b066531997f982b57b
+        set -ag terminal-overrides ",xterm*:Ms=\\E]52;c%p1%.0s;%p2%s\\7"
+        set -ag terminal-overrides ",tmux*:Ms=\\E]52;c%p1%.0s;%p2%s\\7"
+
+        bind-key x send-prefix
+        bind-key C-x last-window
+        bind 'v' copy-mode
+        set-window-option -g mode-keys vi
+        set -g default-command "$SHELL"
+        set -g default-shell "$SHELL"
+        set -ag terminal-overrides ',xterm-256color:Tc'
+        set -as terminal-overrides ',xterm*:sitm=\E[3m'
+        # allow for navigating between words with option
+        set-window-option -g xterm-keys on
+        # Allow the arrow key to be used immediately after changing windows
+        set -g repeat-time 0
+        # Set window notifications
+        set -g monitor-activity on
+        set -g visual-activity on
+        # Status update interval
+        set -g status-interval 1
+        set -g renumber-windows on    # renumber windows when a window is closed
+      '';
     };
 
     yazi = {
@@ -242,14 +242,14 @@ in
 
     zsh = {
       enable = true;
-      # enableCompletion = true;
+      enableCompletion = true;
       enableVteIntegration = true;
-      # autosuggestion = {
-      #   enable = true;
-      #   strategy = [
-      #     "history"
-      #   ];
-      # };
+      autosuggestion = {
+        enable = true;
+        strategy = [
+          "history"
+        ];
+      };
       history = {
         append = false;
         expireDuplicatesFirst = true;
@@ -291,14 +291,14 @@ in
         ];
         theme = "crcandy";
       };
-      # syntaxHighlighting = {
-      #   enable = true;
-      #   highlighters = [
-      #     "brackets"
-      #   ];
-      #   patterns = { };
-      #   styles = { };
-      # };
+      syntaxHighlighting = {
+        enable = true;
+        highlighters = [
+          "brackets"
+        ];
+        patterns = { };
+        styles = { };
+      };
     };
   };
 

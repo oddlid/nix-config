@@ -1,19 +1,26 @@
 { hostname, ... }:
-{ ... }:
+{ lib, ... }:
 {
   networking = {
     hostName = hostname;
     useNetworkd = true;
     firewall = {
-      allowedUDPPorts = [ 5353 ]; # mDNS
+      allowedTCPPorts = [
+        53 # unbound
+      ];
+      allowedUDPPorts = [
+        53 # unbound
+        5353 # mDNS
+      ];
     };
 
     resolvconf = {
-      enable = false;
+      enable = true;
+      useLocalResolver = true;
     };
 
     wireless = {
-      enable = false;
+      enable = lib.mkForce false;
       # Use iwd instead of wpa_supplicant. It has a user friendly CLI
       iwd = {
         enable = false;

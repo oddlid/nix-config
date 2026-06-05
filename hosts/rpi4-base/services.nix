@@ -18,6 +18,10 @@
       enable = false;
     };
 
+    syncthing = {
+      enable = false; # might be needed later
+    };
+
     tailscale = {
       enable = true;
       extraDaemonFlags = [
@@ -45,6 +49,8 @@
       localControlSocketPath = "/run/unbound/unbound.ctl";
       settings = {
         server = {
+          # We need to unset this in order for overridden local adrs to work
+          auto-trust-anchor-file = lib.mkForce ''""'';
           interface = [
             "0.0.0.0"
             "::0"
