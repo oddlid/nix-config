@@ -1,7 +1,27 @@
 { primaryUser, ... }:
 { lib, ... }:
 {
+  # TODO: the service zfs-zed is started automatically.
+  # Find out how to disable that, since we don't use ZFS.
+  # I think it's triggered by zfs.target listed as wanted-by multi-user.target
+
   services = {
+
+    beszel = {
+      agent = {
+        enable = true;
+        environmentFile = ""; # TODO: find suitable path and populate contents.
+        smartmon = {
+          enable = true;
+          deviceAllow = [
+            "/dev/sda"
+            "/dev/mmcblk0"
+          ];
+        };
+        openFirewall = true;
+      };
+    };
+
     getty.autologinUser = lib.mkForce primaryUser;
 
     openssh = {
