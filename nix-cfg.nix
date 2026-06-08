@@ -7,7 +7,7 @@
   # Lix
   nixpkgs.overlays = [
     (final: prev: {
-      inherit (final.lixPackageSets.latest)
+      inherit (final.lixPackageSets.stable)
         nixpkgs-review
         nix-direnv
         nix-eval-jobs
@@ -18,7 +18,7 @@
   ];
 
   nix = {
-    package = pkgs.lixPackageSets.latest.lix;
+    package = pkgs.lixPackageSets.stable.lix;
     #optimize.automatic = true; # suggested, but doesn't exist...
     linux-builder = {
       enable = true;
