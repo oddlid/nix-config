@@ -506,7 +506,7 @@
     };
 
     neomutt = {
-      enable = true;
+      enable = false;
       extraConfig = "";
       settings = { };
       sidebar = {

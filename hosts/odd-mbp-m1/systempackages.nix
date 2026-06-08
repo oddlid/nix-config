@@ -20,7 +20,7 @@
     btop
     coreutils-full
     devenv
-    dix
+    # dix
     docker-compose-language-service
     dockerfile-language-server
     duf
